@@ -1,6 +1,6 @@
-# NMPL Design System
+# Standard Design System
 
-Quiet, monochromatic UI kit for the NMPL e-commerce product. Hierarchy comes from type, spacing, and contrast — never from accent color.
+Quiet, monochromatic UI kit for any product. Hierarchy comes from type, spacing, and contrast — never from accent color.
 
 ## Contents
 
@@ -43,6 +43,6 @@ Quiet, monochromatic UI kit for the NMPL e-commerce product. Hierarchy comes fro
 
 ## License
 
-Design tokens, documentation, and Nucleo icon SVGs in this repo are available for use in NMPL projects.
+Design tokens, documentation, and Nucleo icon SVGs in this repo are available for use in projects.
 
 **SF Pro** remains Apple proprietary — use under [Apple’s font license](https://developer.apple.com/fonts/).
