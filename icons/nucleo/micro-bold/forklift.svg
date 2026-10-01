@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="m12,9H4c-1.103,0-2,.897-2,2v3c0,.552.447,1,1,1h.277c-.172-.295-.277-.634-.277-1,0-1.105.895-2,2-2s2,.895,2,2c0,.366-.106.705-.277,1h1.555c-.172-.295-.277-.634-.277-1,0-1.105.895-2,2-2s2,.895,2,2c0,.366-.106.705-.277,1h.277c.553,0,1-.448,1-1v-4c0-.552-.447-1-1-1Z" stroke-width="0" fill="currentColor" />
+  <path d="m17,16h-1c-.552,0-1-.448-1-1V3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  <polygon points="12 10 6 10 6 4 10 4 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  <circle cx="5" cy="14" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  <circle cx="10" cy="14" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+</svg>

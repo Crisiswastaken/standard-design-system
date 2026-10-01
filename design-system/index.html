@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NMPL Design System</title>
+<meta name="description" content="Reusable foundations, components and patterns. SF Pro, Nucleo Micro Bold icons, monochrome UI.">
+<style>
+/* ================================================================
+   FONTS — SF Pro (local files, ../fonts/sf-pro)
+   Every file in the folder is declared. Browsers only download
+   the faces a page actually uses.
+   ================================================================ */
+/* SF Pro — variable (weight 1–1000, optical size 17–28). Primary family. */
+@font-face { font-family: "SF Pro"; font-weight: 1 1000; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro.ttf") format("truetype"); }
+@font-face { font-family: "SF Pro"; font-weight: 1 1000; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Italic.ttf") format("truetype"); }
+/* SF Pro Text — static fallback */
+@font-face { font-family: "SF Pro Text"; font-weight: 100; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Ultralight.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 100; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-UltralightItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 200; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Thin.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 200; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-ThinItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 300; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Light.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 300; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-LightItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Regular.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-RegularItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Medium.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 500; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-MediumItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 600; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Semibold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 600; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-SemiboldItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Bold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 700; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-BoldItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 800; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Heavy.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 800; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-HeavyItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 900; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-Black.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Text"; font-weight: 900; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Text-BlackItalic.otf") format("opentype"); }
+/* SF Pro Display — static fallback */
+@font-face { font-family: "SF Pro Display"; font-weight: 100; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Ultralight.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 100; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-UltralightItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 200; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Thin.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 200; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-ThinItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 300; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Light.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 300; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-LightItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Regular.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-RegularItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Medium.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 500; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-MediumItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 600; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Semibold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 600; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-SemiboldItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Bold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 700; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-BoldItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 800; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Heavy.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 800; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-HeavyItalic.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 900; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-Black.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Display"; font-weight: 900; font-style: italic; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Display-BlackItalic.otf") format("opentype"); }
+/* SF Pro Rounded — static fallback */
+@font-face { font-family: "SF Pro Rounded"; font-weight: 100; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Ultralight.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 200; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Thin.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 300; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Light.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Regular.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Medium.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 600; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Semibold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 700; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Bold.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 800; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Heavy.otf") format("opentype"); }
+@font-face { font-family: "SF Pro Rounded"; font-weight: 900; font-style: normal; font-display: swap; src: url("../fonts/sf-pro/SF-Pro-Rounded-Black.otf") format("opentype"); }
+
+/* ================================================================
+   TOKENS
+   ================================================================ */
+:root {
+  /* Color — primitives */
+  --gray-0:   #FFFFFF;
+  --gray-25:  #FAFAFA;
+  --gray-50:  #F5F5F5;
+  --gray-75:  #F2F2F2;
+  --gray-500: #7F7F7F;
+  --gray-700: #5D5D5D;
+  --gray-900: #292929;
+
+  /* Color — semantic */
+  --color-background:          var(--gray-0);
+  --color-surface:             var(--gray-0);
+  --color-surface-subtle:      var(--gray-25);
+  --color-background-selected: var(--gray-50);
+  --color-border:              var(--gray-75);
+  --color-divider:             var(--gray-75);
+  --color-text-subtle:         var(--gray-500);
+  --color-text-default:        var(--gray-700);
+  --color-text-strong:         var(--gray-900);
+  --color-icon:                var(--gray-700);
+  --color-icon-strong:         var(--gray-900);
+  --color-inverse:             var(--gray-900);
+  --color-on-inverse:          var(--gray-0);
+
+  /* Typography */
+  --font-sans:    "SF Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: "SF Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-rounded: "SF Pro Rounded", ui-rounded, -apple-system, system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --weight-ultralight: 100;
+  --weight-thin:       200;
+  --weight-light:      300;
+  --weight-regular:    400;  /* product UI */
+  --weight-medium:     500;  /* product UI */
+  --weight-semibold:   600;
+  --weight-bold:       700;
+  --weight-heavy:      800;
+  --weight-black:      900;
+  --text-xs:   12px;  --leading-xs:   16px;
+  --text-sm:   13px;  --leading-sm:   18px;
+  --text-md:   14px;  --leading-md:   20px;
+  --text-base: 16px;  --leading-base: 24px;
+  --text-lg:   18px;  --leading-lg:   24px;
+  --text-xl:   24px;  --leading-xl:   32px;
+  --tracking-tight:   -0.02em;  /* 24px headings   */
+  --tracking-default: -0.01em;  /* default         */
+  --tracking-normal:   0em;     /* 12px UI / labels */
+
+  /* Spacing — 4px base */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px; --space-6: 24px;  --space-8: 32px;  --space-10: 40px;
+  --space-12: 48px; --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;     /* tiny chips  */
+  --radius-md: 8px;     /* inputs      */
+  --radius-lg: 12px;    /* nav items, icon buttons */
+  --radius-xl: 16px;    /* cards       */
+  --radius-2xl: 24px;   /* shells      */
+  --radius-full: 9999px;/* pills only  */
+
+  /* Border & elevation */
+  --border-width: 1px;
+  --shadow-none: none;
+
+  /* Sizing */
+  --size-control: 40px;
+  --size-topbar: 76px;
+  --size-sidebar: 256px;
+  --size-content-max: 1200px;
+  --icon-xs: 14px; --icon-sm: 16px; --icon-md: 18px; --icon-lg: 20px;
+
+  /* Scrollbar */
+  --scrollbar-size: 10px;          /* 6px visible thumb + 2px inset each side */
+  --scrollbar-inset: 2px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: color-mix(in srgb, var(--color-text-strong) 16%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--color-text-strong) 32%, transparent);
+
+  /* Breakpoints (reference — use in media queries) */
+  --bp-sm: 640px; --bp-md: 768px; --bp-lg: 1024px; --bp-xl: 1280px; --bp-2xl: 1536px;
+
+  color-scheme: light;
+}
+
+/* ================================================================
+   BASE
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text-default);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  letter-spacing: var(--tracking-default);
+  font-synthesis: none;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: anywhere;
+}
+button, input { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--color-text-strong); outline-offset: 2px; }
+/* Scrollbar — WebKit/Blink (Chrome, Edge, Safari) */
+::-webkit-scrollbar { width: var(--scrollbar-size); height: var(--scrollbar-size); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb); background-clip: padding-box;
+  border: var(--scrollbar-inset) solid transparent; border-radius: var(--radius-full); min-height: var(--size-control);
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--scrollbar-thumb-hover); }
+::-webkit-scrollbar-thumb:active { background-color: var(--scrollbar-thumb-hover); }
+::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+::-webkit-scrollbar-corner { background: transparent; }
+/* Scrollbar — Firefox (standard properties; kept out of Blink so they don't override the rules above) */
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); }
+}
+/* Hidden scrollbar for horizontal scrollers (tab rows) */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Type utilities */
+.t-xs   { font-size: var(--text-xs);   line-height: var(--leading-xs);   letter-spacing: var(--tracking-normal); }
+.t-sm   { font-size: var(--text-sm);   line-height: var(--leading-sm);   letter-spacing: var(--tracking-default); }
+.t-md   { font-size: var(--text-md);   line-height: var(--leading-md);   letter-spacing: var(--tracking-default); }
+.t-base { font-size: var(--text-base); line-height: var(--leading-base); letter-spacing: var(--tracking-default); }
+.t-lg   { font-size: var(--text-lg);   line-height: var(--leading-lg);   letter-spacing: var(--tracking-default); }
+.t-xl   { font-family: var(--font-display); font-size: var(--text-xl);   line-height: var(--leading-xl);   letter-spacing: var(--tracking-tight); }
+.w-regular { font-weight: var(--weight-regular); }
+.w-medium  { font-weight: var(--weight-medium); }
+.c-subtle  { color: var(--color-text-subtle); }
+.c-default { color: var(--color-text-default); }
+.c-strong  { color: var(--color-text-strong); }
+.overline  { font-size: var(--text-xs); line-height: var(--leading-xs); letter-spacing: var(--tracking-normal); font-weight: var(--weight-medium); color: var(--color-text-subtle); text-transform: uppercase; margin: 0; }
+h1, h2, h3, p { margin: 0; }
+
+/* Icon */
+.icon { flex-shrink: 0; display: block; color: var(--color-icon); }
+.icon-strong { color: var(--color-icon-strong); }
+
+/* ================================================================
+   COMPONENTS
+   ================================================================ */
+
+/* Button — 40px, pill, 16px medium */
+.btn {
+  height: var(--size-control); padding: 0 var(--space-4);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  border-radius: var(--radius-full); border: var(--border-width) solid transparent;
+  background: transparent; color: var(--color-text-default);
+  font-size: var(--text-base); line-height: var(--leading-base); font-weight: var(--weight-medium); letter-spacing: var(--tracking-default);
+  white-space: nowrap; flex-shrink: 0;
+}
+.btn .icon { color: currentColor; }
+.btn-primary   { background: var(--color-inverse); color: var(--color-on-inverse); }
+.btn-secondary { background: var(--color-surface); color: var(--color-text-strong); border-color: var(--color-border); }
+.btn-ghost     { color: var(--color-text-default); }
+/* proposed states */
+.btn-primary:hover   { opacity: .88; }
+.btn-secondary:hover, .btn-ghost:hover { background: var(--color-background-selected); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .4; cursor: not-allowed; }
+
+/* Navigation item — 40px, 12px radius */
+.nav-item {
+  height: var(--size-control); padding: 0 var(--space-3);
+  display: flex; align-items: center; gap: var(--space-3);
+  border-radius: var(--radius-lg); border: 0; background: transparent; width: 100%; text-align: left;
+  color: var(--color-text-default); font-size: var(--text-md); line-height: var(--leading-md); font-weight: var(--weight-regular);
+  flex-shrink: 0; text-decoration: none;
+}
+.nav-item.is-tab { width: auto; gap: var(--space-2); }
+.nav-item:hover { background: var(--color-surface-subtle); }
+.nav-item.is-selected, .nav-item[aria-current] { background: var(--color-background-selected); color: var(--color-text-strong); font-weight: var(--weight-medium); }
+.nav-item.is-selected .icon, .nav-item[aria-current] .icon { color: var(--color-icon-strong); }
+.nav-label { padding: var(--space-6) var(--space-3) var(--space-2); }
+
+/* Input — 40px, 8px radius */
+.input {
+  height: var(--size-control); padding: 0 var(--space-3);
+  display: flex; align-items: center; gap: var(--space-2);
+  border-radius: var(--radius-md); background: var(--color-surface); border: var(--border-width) solid var(--color-border);
+}
+.input input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 0; height: 100%;
+  font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-text-strong); }
+.input input::placeholder { color: var(--color-text-subtle); opacity: 1; }
+.input:focus-within { border-color: var(--color-text-subtle); }
+
+/* Icon button — 40×40, 12px radius */
+.icon-btn {
+  width: var(--size-control); height: var(--size-control); flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-lg); border: var(--border-width) solid transparent; background: transparent;
+}
+.icon-btn:hover, .icon-btn.is-selected { background: var(--color-background-selected); }
+.icon-btn-outline { border-color: var(--color-border); }
+
+/* Badge — 24px pill, 12px */
+.badge {
+  height: 24px; padding: 0 var(--space-3); display: inline-flex; align-items: center;
+  border-radius: var(--radius-full); border: 0; background: transparent;
+  font-size: var(--text-xs); line-height: var(--leading-xs); letter-spacing: var(--tracking-normal);
+  color: var(--color-text-default); font-weight: var(--weight-regular); white-space: nowrap;
+}
+.badge.is-selected, .badge[aria-pressed="true"] { background: var(--color-background-selected); color: var(--color-text-strong); font-weight: var(--weight-medium); }
+
+/* Divider */
+.divider { height: 1px; width: 100%; background: var(--color-divider); border: 0; margin: 0; flex-shrink: 0; }
+
+/* Card — 16px radius, 24px padding, 1px border, no shadow */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-6); border-radius: var(--radius-xl);
+  background: var(--color-surface); border: var(--border-width) solid var(--color-border); box-shadow: var(--shadow-none);
+}
+
+/* Toggle — 36×20 track, 16px knob */
+.toggle {
+  width: 36px; height: 20px; padding: 2px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  border-radius: var(--radius-full); border: 0; background: var(--color-background-selected);
+}
+.toggle-knob { width: 16px; height: 16px; border-radius: var(--radius-full); background: var(--color-surface); border: var(--border-width) solid var(--color-border); }
+.toggle[aria-checked="true"] { background: var(--color-inverse); justify-content: flex-end; }
+.toggle[aria-checked="true"] .toggle-knob { background: var(--color-on-inverse); border-color: transparent; }
+
+/* ================================================================
+   PATTERNS
+   ================================================================ */
+.content-header { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); padding-bottom: var(--space-6); border-bottom: var(--border-width) solid var(--color-divider); }
+.content-header-text { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.settings { display: flex; flex-direction: column; border-radius: var(--radius-xl); overflow: clip; background: var(--color-surface); border: var(--border-width) solid var(--color-border); }
+.settings-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: var(--space-4) var(--space-6); border-bottom: var(--border-width) solid var(--color-divider); }
+.settings-row:last-child { border-bottom: 0; }
+.settings-row-text { display: flex; flex-direction: column; gap: var(--space-1); flex: 1; min-width: 0; }
+.settings-row .input { width: 220px; flex-shrink: 0; }
+
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-6); padding: var(--space-16); text-align: center; flex: 1; }
+.empty-state-text { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+
+.shell { display: flex; flex-direction: column; height: 640px; border-radius: var(--radius-2xl); overflow: hidden; background: var(--color-background); border: var(--border-width) solid var(--color-border); }
+.shell-topbar { height: var(--size-topbar); flex-shrink: 0; display: flex; align-items: center; gap: var(--space-6); padding: 0 var(--space-6); background: var(--color-surface); border-bottom: var(--border-width) solid var(--color-divider); }
+.shell-tabs { display: flex; align-items: center; gap: var(--space-1); overflow-x: auto; }
+.shell-body { flex: 1; display: flex; min-height: 0; }
+.shell-sidebar { width: var(--size-sidebar); flex-shrink: 0; display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-4); background: var(--color-surface); border-right: var(--border-width) solid var(--color-divider); overflow-y: auto; }
+.shell-main { flex: 1; display: flex; flex-direction: column; background: var(--color-surface); min-width: 0; }
+.wordmark { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
+
+/* ================================================================
+   DOCUMENTATION LAYOUT (this page only)
+   ================================================================ */
+.doc { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: calc(var(--size-content-max) + 220px + var(--space-12) * 2); margin: 0 auto; }
+.doc-nav { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: var(--space-12) var(--space-4) var(--space-12) var(--space-6); display: flex; flex-direction: column; gap: var(--space-1); }
+.doc-nav .nav-item { height: 32px; font-size: var(--text-sm); line-height: var(--leading-sm); border-radius: var(--radius-md); }
+.doc-nav .nav-label { padding: var(--space-4) var(--space-3) var(--space-1); }
+.doc-main { padding: var(--space-12); display: flex; flex-direction: column; gap: var(--space-12); min-width: 0; max-width: calc(var(--size-content-max) + var(--space-12) * 2); }
+.doc-section { display: flex; flex-direction: column; gap: var(--space-6); padding-top: var(--space-4); border-top: var(--border-width) solid var(--color-divider); scroll-margin-top: var(--space-6); }
+.doc-section-head { display: flex; flex-direction: column; gap: var(--space-2); }
+.doc-sub { display: flex; flex-direction: column; gap: var(--space-4); }
+.doc-intro { display: flex; flex-direction: column; gap: var(--space-3); }
+.doc-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+.lead { max-width: 560px; }
+.spec { font-size: var(--text-xs); line-height: var(--leading-xs); letter-spacing: var(--tracking-normal); color: var(--color-text-subtle); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.grid { display: grid; gap: var(--space-4); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+.grid-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.stage { padding: var(--space-6); border-radius: var(--radius-xl); background: var(--color-surface-subtle); border: var(--border-width) solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-4); }
+.stage-white { background: var(--color-surface); }
+
+.swatch { display: flex; flex-direction: column; gap: var(--space-2); }
+.swatch-chip { height: 72px; border-radius: var(--radius-md); border: var(--border-width) solid var(--color-border); }
+.swatch-meta { display: flex; flex-direction: column; gap: 2px; }
+
+.type-row { display: grid; grid-template-columns: 72px 136px minmax(0, 1fr); align-items: baseline; gap: var(--space-6); padding: var(--space-3) 0; border-bottom: var(--border-width) solid var(--color-divider); }
+
+.space-row { display: grid; grid-template-columns: 48px 48px minmax(0, 1fr); align-items: center; gap: var(--space-4); }
+.space-bar { height: 12px; border-radius: var(--radius-sm); background: var(--color-text-strong); }
+
+.radius-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center; }
+.radius-chip { width: 72px; height: 72px; background: var(--color-surface-subtle); border: var(--border-width) solid var(--color-border); }
+
+table.spec-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); line-height: var(--leading-sm); }
+.spec-table th { text-align: left; font-weight: var(--weight-medium); font-size: var(--text-xs); line-height: var(--leading-xs); letter-spacing: var(--tracking-normal); color: var(--color-text-subtle); padding: 0 var(--space-4) var(--space-2) 0; border-bottom: var(--border-width) solid var(--color-divider); }
+.spec-table td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-width) solid var(--color-divider); vertical-align: top; color: var(--color-text-default); }
+.spec-table td:first-child { color: var(--color-text-strong); font-weight: var(--weight-medium); white-space: nowrap; }
+.table-wrap { overflow-x: auto; }
+code, .mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0; }
+td code { color: var(--color-text-strong); }
+
+.icon-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.icon-tools .input { flex: 1; min-width: 200px; max-width: 360px; }
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: var(--space-2); }
+.icon-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+  height: 88px; padding: var(--space-2); border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--color-border); background: var(--color-surface); text-align: center;
+}
+.icon-cell:hover { background: var(--color-surface-subtle); }
+.icon-cell .icon { color: var(--color-icon-strong); }
+.icon-cell span { font-size: 11px; line-height: 14px; letter-spacing: var(--tracking-normal); color: var(--color-text-subtle); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.weight-row { display: grid; grid-template-columns: 132px minmax(0, 1fr); align-items: baseline; gap: var(--space-4); padding: var(--space-2) 0; border-bottom: var(--border-width) solid var(--color-divider); }
+.weight-row:last-child { border-bottom: 0; }
+.family { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-3) 0; border-bottom: var(--border-width) solid var(--color-divider); }
+.family:last-child { border-bottom: 0; }
+.scroll-demo { height: 200px; overflow: auto; border-radius: var(--radius-lg); border: var(--border-width) solid var(--color-border); background: var(--color-surface); padding: var(--space-2); }
+.scroll-demo-wide { width: 720px; }
+.icon-sizes { display: flex; align-items: flex-end; gap: var(--space-6); flex-wrap: wrap; }
+.icon-sizes > div { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+
+pre.code {
+  margin: 0; padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface-subtle);
+  border: var(--border-width) solid var(--color-border); overflow: auto; max-height: 420px;
+  font-family: var(--font-mono); font-size: 12px; line-height: 18px; color: var(--color-text-strong); letter-spacing: 0;
+}
+.code-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.status { min-height: var(--leading-xs); }
+.note { padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface-subtle); border: var(--border-width) solid var(--color-border); }
+ul.rules { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: var(--space-2); }
+ul.rules li::marker { color: var(--color-text-subtle); }
+
+@media (max-width: 1023px) {
+  .doc { grid-template-columns: minmax(0, 1fr); }
+  .doc-nav { position: sticky; top: 0; z-index: 2; height: auto; flex-direction: row; overflow-x: auto; padding: var(--space-2) var(--space-4); background: var(--color-background); border-bottom: var(--border-width) solid var(--color-divider); }
+  .doc-nav .nav-label { display: none; }
+  .doc-nav .nav-item { width: auto; white-space: nowrap; }
+  .doc-main { padding: var(--space-8) var(--space-6); }
+  .grid-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .shell-sidebar { display: none; }  /* sidebar collapses below 768 */
+  .shell { height: 560px; }
+  .empty-state { padding: var(--space-8) var(--space-4); }
+}
+@media (max-width: 639px) {
+  .doc-main { padding: var(--space-6) var(--space-4); gap: var(--space-10); }
+  .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .type-row { grid-template-columns: 40px minmax(0, 1fr); gap: var(--space-3); }
+  .type-row > :nth-child(2) { display: none; }
+  .content-header { flex-direction: column; align-items: flex-start; }
+  .settings-row { flex-direction: column; align-items: stretch; gap: var(--space-3); padding: var(--space-4); }
+  .settings-row .input { width: 100%; }
+  .settings-row .toggle { align-self: flex-start; }
+  .shell-topbar { padding: 0 var(--space-4); gap: var(--space-3); }
+  .wordmark .t-md { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     ICON SPRITE — all Nucleo Micro Bold icons (../icons/nucleo/micro-bold)
+     Use: <svg class="icon" width="16" height="16"><use href="#i-check"/></svg>
+     ================================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-accessibility" viewBox="0 0 20 20"><circle cx="10" cy="3" r="2" fill="currentColor" stroke-width="0" /><path d="m4,6c4.056,1.336,8.056,1.331,12,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="8" y1="18" x2="8.5" y2="7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="12" y1="18" x2="11.5" y2="7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="9" y="8" width="2" height="4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-alert-info" viewBox="0 0 20 20"><circle cx="10" cy="4.5" r="1.5" fill="currentColor" stroke-width="0" /><line x1="10" y1="9" x2="10" y2="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-alert-question" viewBox="0 0 20 20"><circle cx="10" cy="15.5" r="1.5" fill="currentColor" stroke-width="0" /><path d="m7.358,6.107c.368-1.506,1.501-2.107,3.079-2.107,1.362,0,2.567.817,2.567,2.553,0,2.444-3.01,2.025-3.01,4.947" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-alert-warning" viewBox="0 0 20 20"><circle cx="10" cy="15.5" r="1.5" fill="currentColor" stroke-width="0" /><line x1="10" y1="4" x2="10" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-anchor" viewBox="0 0 20 20"><circle cx="10" cy="5" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="7" x2="10" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m5,11l-2-1c0,3.866,3.134,7,7,7s7-3.134,7-7l-2,1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-app-stack" viewBox="0 0 20 20"><rect x="4" y="6" width="12" height="8" rx="2" ry="2" transform="translate(20) rotate(90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="14" x2="3" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="14" x2="17" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-archive" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4Zm2,11c0,.552-.448,1-1,1h-1.719c-.459,0-.859.312-.97.757l-.121.485c-.111.445-.511.757-.97.757h-2.438c-.459,0-.859-.312-.97-.757l-.121-.485c-.111-.445-.511-.757-.97-.757h-1.719c-.552,0-1-.448-1-1v-7c0-1.105.895-2,2-2h8c1.105,0,2,.895,2,2v7Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-archive-download" viewBox="0 0 20 20"><polyline points="13 8 10 11 7 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="11" x2="10" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,2h0c-.552,0-1,.448-1,1h0c0,.552.448,1,1,1h0c1.105,0,2,.895,2,2v7c0,.552-.448,1-1,1h-1.719c-.459,0-.859.312-.97.757l-.121.485c-.111.445-.511.757-.97.757h-2.439c-.459,0-.859-.312-.97-.757l-.121-.485c-.111-.445-.511-.757-.97-.757h-1.719c-.552,0-1-.448-1-1v-7c0-1.105.895-2,2-2h0c.552,0,1-.448,1-1h0c0-.552-.448-1-1-1h0c-2.209,0-4,1.791-4,4v8c0,2.209,1.791,4,4,4h8c2.209,0,4-1.791,4-4V6c0-2.209-1.791-4-4-4Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-archive-export" viewBox="0 0 20 20"><polyline points="7 7 10 4 13 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="4" x2="10" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,2h0c-.552,0-1,.448-1,1h0c0,.552.448,1,1,1h0c1.105,0,2,.895,2,2v7c0,.552-.448,1-1,1h-1.719c-.459,0-.859.312-.97.757l-.121.485c-.111.445-.511.757-.97.757h-2.439c-.459,0-.859-.312-.97-.757l-.121-.485c-.111-.445-.511-.757-.97-.757h-1.719c-.552,0-1-.448-1-1v-7c0-1.105.895-2,2-2h0c.552,0,1-.448,1-1h0c0-.552-.448-1-1-1h0c-2.209,0-4,1.791-4,4v8c0,2.209,1.791,4,4,4h8c2.209,0,4-1.791,4-4V6c0-2.209-1.791-4-4-4Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-arrow-door-in" viewBox="0 0 20 20"><path d="m17,6c0-1.195-.703-2.217-1.714-2.7l-2.993,2.993c-.188.188-.293.442-.293.707v6c0,.265.105.52.293.707l2.993,2.993c1.011-.483,1.714-1.505,1.714-2.7V6Z" stroke-width="0" fill="currentColor" /><line x1="9" y1="10" x2="3" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7.563,15.738c.544.761,1.43,1.262,2.437,1.262h4c1.657,0,3-1.343,3-3V6c0-1.657-1.343-3-3-3h-4c-1.009,0-1.898.502-2.441,1.267" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="6.25 12.5 9 10 6.25 7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-door-out" viewBox="0 0 20 20"><path d="m17,6c0-1.195-.703-2.217-1.714-2.7l-2.993,2.993c-.188.188-.293.442-.293.707v6c0,.265.105.52.293.707l2.993,2.993c1.011-.483,1.714-1.505,1.714-2.7V6Z" stroke-width="0" fill="currentColor" /><line x1="3" y1="10" x2="9" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7.44,15.544c.526.869,1.47,1.456,2.56,1.456h4c1.657,0,3-1.343,3-3V6c0-1.657-1.343-3-3-3h-4c-1.089,0-2.033.585-2.558,1.453" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="5.75 7.5 3 10 5.75 12.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 20 20"><line x1="10" y1="3" x2="10" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="5 12 10 17 15 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-down-left" viewBox="0 0 20 20"><line x1="16" y1="4" x2="4" y2="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="4 9 4 16 11 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-down-right" viewBox="0 0 20 20"><line x1="4" y1="4" x2="16" y2="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="16 9 16 16 9 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 20 20"><line x1="17" y1="10" x2="3" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="8 5 3 10 8 15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 20 20"><line x1="3" y1="10" x2="17" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12 15 17 10 12 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-rotate-anticlockwise" viewBox="0 0 20 20"><path d="m5,5.101c1.271-1.297,3.041-2.101,5-2.101,3.866,0,7,3.134,7,7s-3.134,7-7,7c-2.792,0-5.203-1.635-6.326-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="4.367 3.044 3.771 6.798 7.516 6.145 4.367 3.044" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-arrows-bold-opposite-direction" viewBox="0 0 20 20"><path d="m16.5,8c.276,0,.5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-8.5v-3L3,7l2.125,1.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="12 17 12 9 17 13 12 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m3.5,12h10.5v2H3.5c-.276,0-.5-.224-.5-.5v-1c0-.276.224-.5.5-.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-arrows-cross" viewBox="0 0 20 20"><line x1="12.475" y1="12.475" x2="17" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="3" x2="7.525" y2="7.525" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12 17 17 17 17 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="17 8 17 3 12 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="17" x2="17" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrows-expand-diagonal7" viewBox="0 0 20 20"><polyline points="8 17 3 17 3 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="17" x2="8" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12 3 17 3 17 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="3" x2="12" y2="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrows-reduce-diagonal" viewBox="0 0 20 20"><polyline points="3 12 8 12 8 17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="8" y1="12" x2="3" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="17 8 12 8 12 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="12" y1="8" x2="17" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-trend-down" viewBox="0 0 20 20"><path d="m17,14l-7.293-7.293c-.391-.391-1.024-.391-1.414,0l-2.586,2.586c-.391.391-1.024.391-1.414,0l-2.293-2.293" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="17 7 17 14 10 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-trend-up" viewBox="0 0 20 20"><path d="m17,6l-7.293,7.293c-.391.391-1.024.391-1.414,0l-2.586-2.586c-.391-.391-1.024-.391-1.414,0l-2.293,2.293" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="17 13 17 6 10 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 20 20"><line x1="10" y1="17" x2="10" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="15 8 10 3 5 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-up-left" viewBox="0 0 20 20"><line x1="16" y1="16" x2="4" y2="4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="11 4 4 4 4 11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 20 20"><line x1="4" y1="16" x2="16" y2="4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="16 11 16 4 9 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-at-sign" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13,7v5c0,1.646,2.107,1.626,3.349-.403,1.052-1.717.794-4.335-.52-6.058-1.934-2.537-6.406-3.485-9.654-1.388-2.986,1.927-4.048,5.825-2.399,8.976,1.632,3.118,5.463,4.629,8.93,3.501" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-badge-check" viewBox="0 0 20 20"><path d="m17.999,10c0-1.097-.567-2.113-1.465-2.707.215-1.054-.103-2.174-.878-2.95-.775-.776-1.896-1.094-2.95-.878-.593-.897-1.609-1.464-2.706-1.464s-2.113.567-2.706,1.464c-1.053-.216-2.174.102-2.95.878s-1.093,1.896-.878,2.949c-.897.593-1.465,1.61-1.465,2.707s.567,2.113,1.465,2.707c-.215,1.054.103,2.174.878,2.95s1.898,1.092,2.95.878c.593.897,1.609,1.464,2.706,1.464s2.113-.568,2.706-1.465c1.059.214,2.176-.103,2.95-.878.776-.776,1.094-1.896.878-2.95.897-.593,1.465-1.609,1.465-2.707Zm-4.218-1.875l-4,5c-.178.222-.442.358-.726.374-.019,0-.037.001-.056.001-.265,0-.52-.105-.707-.293l-2-2c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.21,1.21,3.302-4.127c.347-.43.975-.502,1.406-.156.431.345.501.974.156,1.405Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-bars-filter" viewBox="0 0 20 20"><line x1="14" y1="10" x2="6" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="5" x2="17" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="9" y1="15" x2="11" y2="15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-basement" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4Zm2,4v2h-4v-2h4Zm0,4v2h-7v-2h7Zm-2,6H6v-2h10c0,1.103-.897,2-2,2Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-bed" viewBox="0 0 20 20"><line x1="3" y1="16" x2="3" y2="4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="13" x2="17" y2="13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m11,13v-5h3c1.657,0,3,1.343,3,3v5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="7" cy="9" r="2" fill="currentColor" stroke-width="0" /><path d="m11,8h3c1.656,0,3,1.344,3,3v2h-6v-5h0Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-bolt" viewBox="0 0 20 20"><polygon points="11 2.5 10.5 8 16 8 9 17.5 9.5 12 4 12 11 2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-bolt-filled" viewBox="0 0 20 20"><polygon points="11 3 9 9 16 9 9 17 11 11 4 11 11 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 20 20"><path d="m16,17l-6-4-6,4V6c0-1.657,1.343-3,3-3h6c1.657,0,3,1.343,3,3v11Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-bookmark-filled" viewBox="0 0 20 20"><path d="m16,17l-6-4-6,4V6c0-1.657,1.343-3,3-3h6c1.657,0,3,1.343,3,3v11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-box-archive" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="2" rx=".5" ry=".5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,9v4c0,2.206,1.794,4,4,4h6c2.206,0,4-1.794,4-4v-4H3Zm9,4h-4c-.553,0-1-.448-1-1s.447-1,1-1h4c.553,0,1,.448,1,1s-.447,1-1,1Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-box-archive-download" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="2" rx=".5" ry=".5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><line x1="15" y1="17" x2="15" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12.5 14.5 15 17 17.5 14.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.379,16.621c-.566-.566-.879-1.32-.879-2.121s.312-1.555.879-2.121c.447-.447,1.01-.736,1.621-.838v-.541c0-.771.301-1.468.78-2H3v4c0,2.206,1.794,4,4,4h3.758l-.379-.379Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-brightness-increase" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4" stroke-width="0" fill="currentColor" /><line x1="10" y1="2" x2="10" y2="3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="15.657" y1="4.343" x2="14.596" y2="5.404" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="18" y1="10" x2="16.5" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="15.657" y1="15.657" x2="14.596" y2="14.596" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="18" x2="10" y2="16.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="4.343" y1="15.657" x2="5.404" y2="14.596" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="2" y1="10" x2="3.5" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="4.343" y1="4.343" x2="5.404" y2="5.404" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-button" viewBox="0 0 20 20"><path d="m17,10v-3c0-1.657-1.343-3-3-3H6c-1.657,0-3,1.343-3,3v3c0,1.657,1.343,3,3,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9.721,10.112l6.338,3.375c.406.216.317.821-.133.912l-2.956.598-1.295,2.723c-.197.415-.806.354-.917-.091l-1.742-6.966c-.103-.412.331-.751.705-.551Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-caret-expand-y" viewBox="0 0 20 20"><polygon points="7.5 7 10 4 12.5 7 7.5 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><polygon points="7.5 13 10 16 12.5 13 7.5 13" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-caret-up-right-down-left" viewBox="0 0 20 20"><polygon points="5 11.75 3 10 5 8.25 5 11.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="8.25 5 10 3 11.75 5 8.25 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><polygon points="15 8.25 17 10 15 11.75 15 8.25" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="11.75 15 10 17 8.25 15 11.75 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-chat-bot" viewBox="0 0 20 20"><line x1="7" y1="4" x2="7" y2="7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="7" cy="3" r="1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.475,7.439l-1.414-1.414c-.122-.123-.3-.172-.468-.133-.169.04-.305.164-.359.329l-.707,2.121c-.06.18-.013.378.121.512.095.095.223.146.354.146.053,0,.106-.008.158-.026l2.121-.707c.165-.055.289-.19.329-.359.04-.168-.011-.346-.133-.468Z" fill="currentColor" stroke-width="0" /><path d="m8.328,7.028c-.003-.009-.504-.019-.507-.028h-1.822c-1.657,0-3,1.343-3,3v4c0,1.657,1.343,3,3,3h8c1.657,0,3-1.343,3-3v-3.24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="14.5" cy="5" r="3" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="7" cy="11.5" r="1" stroke-width="0" fill="currentColor" /><circle cx="13" cy="11.5" r="1" stroke-width="0" fill="currentColor" /><path d="m9,13h2c.276,0,.5.224.5.5h0c0,.828-.672,1.5-1.5,1.5h0c-.828,0-1.5-.672-1.5-1.5h0c0-.276.224-.5.5-.5Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20"><polyline points="4 11 8 15 16 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-check2" viewBox="0 0 20 20"><polyline points="6.5 10.5 8.75 13 13.5 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-checkbox-checked" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="6.5 10.5 8.75 13 13.5 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-checkbox-checked-filled" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4Zm.284,5.621l-4.75,6c-.183.231-.458.37-.753.379-.01,0-.021,0-.031,0-.283,0-.554-.12-.743-.331l-2.25-2.5c-.369-.411-.336-1.043.074-1.412.411-.37,1.042-.336,1.412.074l1.458,1.62,4.015-5.071c.343-.432.971-.506,1.405-.164.433.343.506.972.163,1.405Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-checkbox-unchecked" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-chevron-expand-y" viewBox="0 0 20 20"><polyline points="13 7 10 4 7 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="13 13 10 16 7 13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-circle-check-plus" viewBox="0 0 20 20"><polyline points="7 10.5 9 12.5 13 7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="15" y1="18" x2="15" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16.936,9.101c-.442-3.44-3.375-6.101-6.936-6.101-3.866,0-7,3.134-7,7,0,3.561,2.661,6.494,6.101,6.936" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="12" y1="15" x2="18" y2="15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-circle-half-dotted-check" viewBox="0 0 20 20"><path d="m10,3c3.866,0,7,3.134,7,7s-3.134,7-7,7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="7 10.5 9 12.5 13 7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="6.5" cy="16.062" r="1" fill="currentColor" stroke-width="0" /><circle cx="3.938" cy="13.5" r="1" fill="currentColor" stroke-width="0" /><circle cx="3" cy="10" r="1" fill="currentColor" stroke-width="0" /><circle cx="3.938" cy="6.5" r="1" fill="currentColor" stroke-width="0" /><circle cx="6.5" cy="3.938" r="1" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-circle-info" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10s3.589,8,8,8,8-3.589,8-8S14.411,2,10,2Zm1,12c0,.552-.447,1-1,1s-1-.448-1-1v-4.5c0-.552.447-1,1-1s1,.448,1,1v4.5Zm-1-6.5c-.689,0-1.25-.561-1.25-1.25s.561-1.25,1.25-1.25,1.25.561,1.25,1.25-.561,1.25-1.25,1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-circle-question" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10s3.589,8,8,8,8-3.589,8-8S14.411,2,10,2Zm0,13.5c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Zm1.668-5.121c-.466.331-.622.467-.686.805-.09.481-.51.816-.982.816-.061,0-.123-.005-.185-.017-.543-.102-.9-.625-.799-1.167.218-1.16.985-1.706,1.492-2.066.513-.365.634-.468.634-.913,0-.776-.641-.837-.837-.837-.988,0-1.227.657-1.305.873-.188.52-.763.788-1.282.598-.519-.189-.787-.763-.598-1.282.499-1.371,1.689-2.189,3.185-2.189,1.375,0,2.837.994,2.837,2.837,0,1.494-.888,2.125-1.475,2.542Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-circle-user-filled" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10s3.589,8,8,8,8-3.589,8-8S14.411,2,10,2Zm0,4c1.378,0,2.5,1.122,2.5,2.5s-1.122,2.5-2.5,2.5-2.5-1.122-2.5-2.5,1.122-2.5,2.5-2.5Zm0,10c-1.522,0-2.908-.574-3.967-1.511.92-1.228,2.361-1.989,3.967-1.989s3.048.761,3.967,1.989c-1.059.937-2.446,1.511-3.967,1.511Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-circle-warning" viewBox="0 0 20 20"><path d="m10,18c4.411,0,8-3.589,8-8S14.411,2,10,2,2,5.589,2,10s3.589,8,8,8Zm-1-12c0-.552.447-1,1-1s1,.448,1,1v4.5c0,.552-.447,1-1,1s-1-.448-1-1v-4.5Zm1,6.5c.689,0,1.25.561,1.25,1.25s-.561,1.25-1.25,1.25-1.25-.561-1.25-1.25.561-1.25,1.25-1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="13" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="8" y="3" width="4" height="2" rx=".25" ry=".25" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-clock-rotate-clockwise" viewBox="0 0 20 20"><polyline points="10 7 10 10 12 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="4.367 16.956 3.771 13.202 7.516 13.855 4.367 16.956" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m5,14.899c1.271,1.297,3.041,2.101,5,2.101,3.866,0,7-3.134,7-7s-3.134-7-7-7c-2.792,0-5.203,1.635-6.326,4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-clone" viewBox="0 0 20 20"><path d="m13,7h2c1.105,0,2,.895,2,2v6c0,1.105-.895,2-2,2h-6c-1.105,0-2-.895-2-2v-2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="10" height="10" rx="2" ry="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-clone-filled" viewBox="0 0 20 20"><path d="m13,7h2c1.105,0,2,.895,2,2v6c0,1.105-.895,2-2,2h-6c-1.105,0-2-.895-2-2v-2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="10" height="10" rx="2" ry="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-cloud-refresh" viewBox="0 0 20 20"><path d="m12,16.236c-.531.475-1.232.764-2,.764-1.657,0-3-1.343-3-3s1.343-3,3-3c.888,0,1.687.386,2.236,1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.25,10c.097,0,.194.019.287.057.28.116.463.39.463.693v2.5c0,.414-.336.75-.75.75h-2.5c-.303,0-.577-.183-.693-.463s-.052-.603.163-.817l2.5-2.5c.144-.144.335-.22.53-.22Z" fill="currentColor" stroke-width="0" /><path d="m16.455,10.226c.337-.673.545-1.422.545-2.226,0-2.761-2.239-5-5-5-2.49,0-4.539,1.826-4.92,4.208-.336-.13-.698-.208-1.08-.208-1.657,0-3,1.343-3,3,0,.787.31,1.498.806,2.033" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-compose2" viewBox="0 0 20 20"><path d="m9.555,3h-3.555c-1.657,0-3,1.343-3,3v8c0,1.657,1.343,3,3,3h8c1.657,0,3-1.343,3-3v-3.545" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m8,12l.5-3,5.707-5.699c.391-.391,1.024-.391,1.414,0l1.086,1.086c.391.391.391,1.024,0,1.414l-5.707,5.699-3,.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-desk-lamp" viewBox="0 0 20 20"><path d="m11.706,4.004l-1.231-.846c-.408-.28-.966-.177-1.246.231l-.578.841c-.28.408-.177.966.231,1.246l1.231.846c.985.677.6,3.313,2.585,4.678l4.302-6.257c-1.954-1.344-4.309-.062-5.293-.739h0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><line x1="4" y1="17" x2="14" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9,17l-3.586-3.586c-.781-.781-.781-2.047,0-2.828l2.086-2.086" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-download" viewBox="0 0 20 20"><polyline points="12.75 10.25 10 13 7.25 10.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="3" x2="10" y2="13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.285,7c1.541,0,2.832,1.168,2.985,2.701l.4,4c.177,1.766-1.21,3.299-2.985,3.299h-7.37c-1.775,0-3.162-1.532-2.985-3.299l.4-4c.153-1.534,1.444-2.701,2.985-2.701" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-download4" viewBox="0 0 20 20"><polyline points="14 8 10 12 6 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="3" x2="10" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,13v1c0,1.657-1.343,3-3,3H6c-1.657,0-3-1.343-3-3v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-envelope" viewBox="0 0 20 20"><path d="m3,7l6.504,3.716c.307.176.685.176.992,0l6.504-3.716" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="4" width="14" height="12" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-envelope-filled" viewBox="0 0 20 20"><path d="m10,9.905l7.937-3.527c-.301-1.909-1.944-3.378-3.937-3.378H6c-1.993,0-3.636,1.469-3.937,3.378l7.937,3.527Z" fill="currentColor" stroke-width="0" /><path d="m10.812,11.733c-.258.115-.535.172-.812.172s-.555-.057-.813-.172l-7.187-3.194v4.461c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4v-4.461l-7.188,3.195Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-envelope-open-heart" viewBox="0 0 20 20"><path d="m16.728,8.155l-6.232,3.561c-.307.176-.685.176-.992,0l-6.232-3.561" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m4.346,7.231l-.338.193c-.623.356-1.008,1.019-1.008,1.737v4.839c0,1.657,1.343,3,3,3h8c1.657,0,3-1.343,3-3v-4.839c0-.718-.385-1.38-1.008-1.737l-.353-.202" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.98,3.863c-.141-1.133-1.059-1.883-2.201-1.863-.71.013-1.304.374-1.78.969-.364-.606-1.091-.97-1.818-.97-1.212,0-2.182.97-2.182,2.182.1,2.211,2.201,4.078,3.399,4.928.355.252.827.24,1.172-.024,1.163-.892,3.675-3.086,3.409-5.222Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-expand" viewBox="0 0 20 20"><path d="m7,17h-1c-1.657,0-3-1.343-3-3v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13,3h1c1.657,0,3,1.343,3,3v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,7v-1c0-1.657,1.343-3,3-3h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,13v1c0,1.657-1.343,3-3,3h-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-expand2" viewBox="0 0 20 20"><path d="m17,12v2c0,1.657-1.343,3-3,3h-2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,8v-2c0-1.657,1.343-3,3-3h2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="17 8 17 3 12 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="12" y1="8" x2="17" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="3 12 3 17 8 17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="8" y1="12" x2="3" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-eye" viewBox="0 0 20 20"><path d="m3.361,11.314c-.481-.8-.481-1.829,0-2.629.962-1.714,3.175-4.686,6.639-4.686s5.677,2.971,6.639,4.686c.481.8.481,1.829,0,2.629-.962,1.714-3.175,4.686-6.639,4.686s-5.677-2.857-6.639-4.686Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="10" cy="10" r="3" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-eye-filled" viewBox="0 0 20 20"><path d="m17.511,8.196c-.877-1.562-3.365-5.196-7.511-5.196s-6.634,3.634-7.496,5.17c-.663,1.103-.668,2.525-.016,3.633.663,1.251,3.107,5.196,7.512,5.196,4.146,0,6.634-3.634,7.496-5.17.668-1.111.668-2.548.015-3.634Zm-7.511,4.804c-1.657,0-3-1.343-3-3s1.343-3,3-3,3,1.343,3,3-1.343,3-3,3Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-face-expression" viewBox="0 0 20 20"><circle cx="6.75" cy="9.25" r="1.25" fill="currentColor" stroke-width="0" /><circle cx="13.25" cy="9.25" r="1.25" fill="currentColor" stroke-width="0" /><path d="m8.667,11.333h2.667c.368,0,.667.299.667.667h0c0,1.104-.896,2-2,2h0c-1.104,0-2-.896-2-2h0c0-.368.299-.667.667-.667Z" fill="currentColor" stroke-width="0" /><path d="m3,7v-1c0-1.657,1.343-3,3-3h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7,17h-1c-1.657,0-3-1.343-3-3v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,13v1c0,1.657-1.343,3-3,3h-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13,3h1c1.657,0,3,1.343,3,3v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-face-plus" viewBox="0 0 20 20"><circle cx="6.75" cy="10.25" r="1.25" stroke-width="0" fill="currentColor" /><circle cx="13.25" cy="10.25" r="1.25" stroke-width="0" fill="currentColor" /><path d="m8.667,12h2.667c.368,0,.667.299.667.667h0c0,1.104-.896,2-2,2h0c-1.104,0-2-.896-2-2h0c0-.368.299-.667.667-.667Z" stroke-width="0" fill="currentColor" /><line x1="15" y1="7.5" x2="15" y2="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9.633,3.018c-3.694.192-6.633,3.239-6.633,6.982,0,3.866,3.134,7,7,7,3.742,0,6.79-2.939,6.982-6.633" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="12.5" y1="5" x2="17.5" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-face-search" viewBox="0 0 20 20"><circle cx="6.75" cy="10.25" r="1.25" stroke-width="0" fill="currentColor" /><circle cx="13.25" cy="10.25" r="1.25" stroke-width="0" fill="currentColor" /><path d="m8.667,12h2.667c.368,0,.667.299.667.667h0c0,1.104-.896,2-2,2h0c-1.104,0-2-.896-2-2h0c0-.368.299-.667.667-.667Z" stroke-width="0" fill="currentColor" /><circle cx="13.5" cy="4.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7.601,3.431c-2.682.98-4.601,3.547-4.601,6.569,0,3.866,3.134,7,7,7,3.356,0,6.158-2.363,6.839-5.515" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="8" x2="15.268" y2="6.268" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-feather" viewBox="0 0 20 20"><path d="m14.451,9.699c-.513,3.998-3.934,4.571-7.451,4.003" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,17s1.469-12.904,14-14c-.627,1.093-.642,2.918-1.06,4.748-.587,2.252-2.615,2.532-5.1,2.532" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-feather-filled" viewBox="0 0 20 20"><path d="m10.125,11.167s3.167.688,5.214-.86c.706-.49,1.286-1.223,1.576-2.337.158-.692.258-1.359.354-2.004.148-.993.289-1.93.598-2.468.186-.323.176-.722-.024-1.036-.2-.313-.555-.489-.93-.458C3.722,3.158,2.022,16.75,2.007,16.887c-.062.549.331,1.044.88,1.107.038.004.077.006.114.006.502,0,.935-.376.992-.887.004-.037.151-1.192.682-2.802,1.634.375,3.085.574,4.34.574,1.731,0,3.113-.357,4.171-1.072.322-.217.6-.476.854-.757-3.002-.561-3.914-1.89-3.914-1.89Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-file" viewBox="0 0 20 20"><path d="m4,7h3c.552,0,1-.448,1-1v-3" fill="currentColor" stroke="currentColor" stroke-linejoin="round" stroke-width="2" /><path d="m16,14v-8c0-1.657-1.343-3-3-3h-4.586c-.265,0-.52.105-.707.293l-3.414,3.414c-.188.188-.293.442-.293.707v6.586c0,1.657,1.343,3,3,3h6c1.657,0,3-1.343,3-3Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-file-clip" viewBox="0 0 20 20"><path d="m4,7h3c.552,0,1-.448,1-1v-3" stroke="currentColor" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m16,8.943v-2.943c0-1.657-1.343-3-3-3h-4.586c-.265,0-.52.105-.707.293l-3.414,3.414c-.188.188-.293.442-.293.707v6.586c0,1.657,1.343,3,3,3h1.24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,14v-1.5c0-.828-.672-1.5-1.5-1.5h0c-.828,0-1.5.672-1.5,1.5v1.5c0,1.657,1.343,3,3,3h0c1.657,0,3-1.343,3-3v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-file-clock" viewBox="0 0 20 20"><path d="m4,7h3c.552,0,1-.448,1-1v-3" stroke="currentColor" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m16,7.818v-1.818c0-1.657-1.343-3-3-3h-4.586c-.265,0-.52.105-.707.293l-3.414,3.414c-.188.188-.293.442-.293.707v6.586c0,1.657,1.343,3,3,3h1.24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,10c-2.209,0-4,1.791-4,4s1.791,4,4,4,4-1.791,4-4-1.791-4-4-4Zm2.031,5.625c-.198.247-.488.375-.782.375-.219,0-.439-.072-.624-.219l-1.25-1c-.237-.189-.375-.477-.375-.781v-1.5c0-.552.447-1,1-1s1,.448,1,1v1.02l.875.7c.431.345.501.974.156,1.405Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-file-download" viewBox="0 0 20 20"><path d="m4,7h3c.552,0,1-.448,1-1v-3" stroke="currentColor" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><line x1="15" y1="17" x2="15" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16,7.663v-1.663c0-1.657-1.343-3-3-3h-4.586c-.265,0-.52.105-.707.293l-3.414,3.414c-.188.188-.293.442-.293.707v6.586c0,1.657,1.343,3,3,3h3.05l-.025-.025" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12.5 14.5 15 17 17.5 14.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-files" viewBox="0 0 20 20"><path d="m3,6h2c.552,0,1-.448,1-1v-2" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9,9h2c.552,0,1-.448,1-1v-2" stroke="currentColor" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m10.039,3.104c-.168-.065-.348-.104-.539-.104h-3.5l-3,3v6.5c0,.828.672,1.5,1.5,1.5h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,15.5v-8c0-.828-.672-1.5-1.5-1.5h-3.5s-3,3-3,3v6.5c0,.828.672,1.5,1.5,1.5h5c.828,0,1.5-.672,1.5-1.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-file-search" viewBox="0 0 20 20"><path d="m4,7h3c.552,0,1-.448,1-1v-3" stroke="currentColor" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><circle cx="13.5" cy="13.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16,8.053v-2.053c0-1.657-1.343-3-3-3h-4.586c-.265,0-.52.105-.707.293l-3.414,3.414c-.188.188-.293.442-.293.707v6.586c0,1.657,1.343,3,3,3h1.636" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="17" x2="15.268" y2="15.268" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-finder" viewBox="0 0 20 20"><path d="m11.5,3c-1.75,2.596-2.75,5.263-3,8h2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.607,13c-1.053.635-2.288,1-3.607,1s-2.554-.365-3.607-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="13" cy="8" r="1" fill="currentColor" stroke-width="0" /><circle cx="6.5" cy="8" r="1" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-folder" viewBox="0 0 20 20"><path d="m10,6H3v-1.5c0-.828.672-1.5,1.5-1.5h2.965c.334,0,.647.167.832.445l1.703,2.555Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,6h12.5c.828,0,1.5.672,1.5,1.5v6.5c0,1.656-1.344,3-3,3H6c-1.656,0-3-1.344-3-3V6h0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-folder-open" viewBox="0 0 20 20"><path d="m13.5,6h-3.5l-1.703-2.555c-.185-.278-.498-.445-.832-.445h-2.965c-.828,0-1.5.672-1.5,1.5v9.5c0,.781.299,1.491.789,2.025-.254-.42-.365-.931-.248-1.459l1.111-5c.203-.915,1.015-1.566,1.952-1.566h8.396v-.5c0-.828-.672-1.5-1.5-1.5Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14.041,17H5.493c-1.279,0-2.23-1.185-1.952-2.434l1.111-5c.203-.915,1.015-1.566,1.952-1.566h8.548c1.279,0,2.23,1.185,1.952,2.434l-1.111,5c-.203.915-1.015,1.566-1.952,1.566Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-folder-tree" viewBox="0 0 20 20"><polyline points="4 3 4 6 7 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m4,6v7c0,1.105.895,2,2,2h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m12.75,4.5l-1-1.5h-1.25c-.276,0-.5.224-.5.5v3.5c0,.552.448,1,1,1h4c.552,0,1-.448,1-1v-2c0-.276-.224-.5-.5-.5h-2.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m12.75,13.5l-1-1.5h-1.25c-.276,0-.5.224-.5.5v3.5c0,.552.448,1,1,1h4c.552,0,1-.448,1-1v-2c0-.276-.224-.5-.5-.5h-2.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-forklift" viewBox="0 0 20 20"><path d="m12,9H4c-1.103,0-2,.897-2,2v3c0,.552.447,1,1,1h.277c-.172-.295-.277-.634-.277-1,0-1.105.895-2,2-2s2,.895,2,2c0,.366-.106.705-.277,1h1.555c-.172-.295-.277-.634-.277-1,0-1.105.895-2,2-2s2,.895,2,2c0,.366-.106.705-.277,1h.277c.553,0,1-.448,1-1v-4c0-.552-.447-1-1-1Z" stroke-width="0" fill="currentColor" /><path d="m17,16h-1c-.552,0-1-.448-1-1V3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="12 10 6 10 6 4 10 4 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="5" cy="14" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="10" cy="14" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-full-screen4" viewBox="0 0 20 20"><path d="m3,7v-1c0-1.657,1.343-3,3-3h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7,17h-1c-1.657,0-3-1.343-3-3v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,13v1c0,1.657-1.343,3-3,3h-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13,3h1c1.657,0,3,1.343,3,3v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="8" y="8" width="4" height="4" rx="1" ry="1" transform="translate(20 0) rotate(90)" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-gauge2" viewBox="0 0 20 20"><circle cx="10" cy="10" r="1" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3.244,8.194c-.154.577-.244,1.181-.244,1.806,0,3.866,3.134,7,7,7s7-3.134,7-7-3.134-7-7-7c-.626,0-1.229.09-1.806.244" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="10" x2="5" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-gear4" viewBox="0 0 20 20"><path d="m17.447,8.605l-.673-.336c-.167-.653-.425-1.268-.761-1.834l.238-.715c.12-.359.026-.756-.242-1.023l-.707-.707c-.268-.269-.665-.363-1.023-.242l-.715.238c-.565-.336-1.181-.594-1.834-.761l-.336-.673c-.169-.339-.516-.553-.895-.553h-1c-.379,0-.725.214-.895.553l-.336.673c-.653.167-1.268.425-1.834.761l-.715-.238c-.359-.121-.755-.026-1.023.242l-.707.707c-.268.268-.361.664-.242,1.023l.238.715c-.336.565-.594,1.181-.761,1.834l-.673.336c-.339.169-.553.516-.553.895v1c0,.379.214.725.553.895l.673.336c.167.653.425,1.268.761,1.834l-.238.715c-.12.359-.026.756.242,1.023l.707.707c.19.191.446.293.707.293.106,0,.212-.017.316-.051l.715-.238c.565.336,1.181.594,1.834.761l.336.673c.169.339.516.553.895.553h1c.379,0,.725-.214.895-.553l.336-.673c.653-.167,1.268-.425,1.834-.761l.715.238c.104.035.21.051.316.051.261,0,.517-.103.707-.293l.707-.707c.268-.268.361-.664.242-1.023l-.238-.715c.336-.565.594-1.181.761-1.834l.673-.336c.339-.169.553-.516.553-.895v-1c0-.379-.214-.725-.553-.895Zm-7.447,6.395c-2.761,0-5-2.239-5-5s2.239-5,5-5,5,2.239,5,5-2.239,5-5,5Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-ghost-enraged" viewBox="0 0 20 20"><path d="m10,2c-3.859,0-7,3.14-7,7v8c0,.388.225.741.576.906.349.163.766.112,1.064-.138l2.359-1.966,2.359,1.966c.371.31.91.31,1.281,0l2.359-1.966,2.359,1.966c.184.153.411.232.641.232.144,0,.289-.031.424-.094.352-.165.576-.518.576-.906v-8c0-3.86-3.141-7-7-7Zm-1.168,8.412c-.719.646-1.801.79-2.684.28s-1.3-1.518-1.099-2.464c.077-.365.517-.524.839-.338l2.816,1.626c.323.186.404.646.128.896Zm5.019.28c-.883.51-1.965.366-2.684-.28-.277-.249-.195-.71.128-.896l2.816-1.626c.323-.186.762-.028.839.338.201.946-.216,1.954-1.099,2.464Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-grid2" viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="3" width="5" height="5" rx="1.5" ry="1.5" transform="translate(8.136 -8.642) rotate(45)" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-grid-check" viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="11.5 6 13.5 8 17.5 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-grid-circle-plus" viewBox="0 0 20 20"><circle cx="5.5" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="5.5" cy="14.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="14.5" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="14.5" y1="12" x2="14.5" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="14.5" x2="12" y2="14.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-grid-filled" viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5" rx="1.5" ry="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><rect x="12" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="12" width="5" height="5" rx="1.5" ry="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-grid-layout" viewBox="0 0 20 20"><rect x="12" y="3" width="5" height="7" rx="1" ry="1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="10" width="5" height="7" rx="1" ry="1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="2" y="2" width="7" height="5" rx="2" ry="2" fill="currentColor" stroke-width="0" /><rect x="11" y="13" width="7" height="5" rx="2" ry="2" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-grid-plus" viewBox="0 0 20 20"><rect x="3" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="14.5" y1="12" x2="14.5" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="14.5" x2="12" y2="14.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-hammer2" viewBox="0 0 20 20"><path d="m13.57,9.258l-6.656,6.656c-.781.781-2.047.781-2.828,0h0c-.781-.781-.781-2.047,0-2.828l6.656-6.656" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m15.831,10.602l1.432-1.432c.316-.316.316-.829,0-1.146l-4.01-4.379-4.931-.343-.286.286,6.65,7.013c.316.316.829.316,1.146,0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-hand2" viewBox="0 0 20 20"><line x1="16" y1="5" x2="16" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="13" y1="4" x2="13" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="3" x2="10" y2="13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="7" y1="4" x2="7" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="7.384" y1="15.082" x2="3.5" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" /><path d="m7,10.5v1.5l-.793,1.43c.615,2.065,2.528,3.57,4.793,3.57,2.761,0,5-2.239,5-5v-1.5H7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-hand-holding-heart" viewBox="0 0 20 20"><path d="m3,9h1.7c.528,0,1.051.105,1.538.308l3.889,1.621c.768.32,1.148,1.187.864,1.969h0c-.278.764-1.096,1.185-1.879.968l-3.113-.865" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.992,12.897l4.392-1.74c.875-.356,1.869.101,2.167.997h0c.257.772-.092,1.616-.82,1.979l-5.34,2.67c-.895.448-1.925.543-2.888.268l-5.504-1.573" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16.98,3.863c-.141-1.133-1.059-1.883-2.201-1.863-.71.013-1.304.374-1.78.969-.364-.606-1.091-.97-1.818-.97-1.212,0-2.182.97-2.182,2.182.1,2.211,2.201,4.078,3.399,4.928.355.252.827.24,1.172-.024,1.163-.892,3.675-3.086,3.409-5.222Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-heart" viewBox="0 0 20 20"><path d="m9.529,16.474c.297.155.644.155.941,0,1.57-.819,6.53-3.788,6.53-8.614.008-2.12-1.704-3.847-3.827-3.86-1.277.016-2.464.66-3.173,1.72-.71-1.06-1.897-1.704-3.173-1.72-2.123.013-3.835,1.739-3.827,3.86,0,4.827,4.96,7.795,6.53,8.614h0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-heart-filled" viewBox="0 0 20 20"><path d="m9.529,16.474c.297.155.644.155.941,0,1.57-.819,6.53-3.788,6.53-8.614.008-2.12-1.704-3.847-3.827-3.86-1.277.016-2.464.66-3.173,1.72-.71-1.06-1.897-1.704-3.173-1.72-2.123.013-3.835,1.739-3.827,3.86,0,4.827,4.96,7.795,6.53,8.614h0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-hexagon-check" viewBox="0 0 20 20"><path d="m16.083,5.056l-4.688-2.858c-.861-.523-1.93-.524-2.791,0l-4.688,2.857c-.874.533-1.417,1.531-1.417,2.604v4.679c0,1.074.543,2.072,1.417,2.604l4.688,2.858c.43.262.913.393,1.395.393s.965-.131,1.395-.393l4.688-2.857c.874-.533,1.417-1.531,1.417-2.604v-4.679c0-1.074-.543-2.072-1.417-2.604Zm-1.799,2.564l-4.75,6c-.183.231-.458.37-.753.379-.01,0-.021,0-.031,0-.283,0-.554-.12-.743-.331l-2.25-2.5c-.369-.411-.336-1.043.074-1.412.411-.37,1.042-.336,1.412.074l1.458,1.62,4.015-5.071c.343-.432.971-.506,1.405-.164.433.343.506.972.163,1.405Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-history" viewBox="0 0 20 20"><polygon points="4.367 3.044 3.771 6.798 7.516 6.145 4.367 3.044" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><polyline points="10 7 10 10 12 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m5,5.101c1.271-1.297,3.041-2.101,5-2.101,3.866,0,7,3.134,7,7s-3.134,7-7,7c-3.526,0-6.444-2.608-6.929-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-house2" viewBox="0 0 20 20"><line x1="10" y1="17" x2="10" y2="13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m4.378,6.114l5.082-3.267c.329-.212.752-.212,1.082,0l5.082,3.267c.859.552,1.378,1.503,1.378,2.524v5.362c0,1.657-1.343,3-3,3H6c-1.657,0-3-1.343-3-3v-5.362c0-1.021.519-1.972,1.378-2.524Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-house2-fill" viewBox="0 0 20 20"><path d="m16.163,5.273l-5.081-3.266c-.657-.423-1.507-.423-2.163,0l-5.082,3.267h0c-1.15.74-1.837,1.998-1.837,3.365v5.362c0,2.206,1.794,4,4,4h3v-4c0-.552.448-1,1-1s1,.448,1,1v4h3c2.206,0,4-1.794,4-4v-5.362c0-1.367-.687-2.625-1.837-3.365Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-house6" viewBox="0 0 20 20"><polyline points="2.5 7.5 10 2.5 17.5 7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16,10v4c0,1.657-1.343,3-3,3h-6c-1.657,0-3-1.343-3-3v-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="17" x2="10" y2="13" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-house6-fill" viewBox="0 0 20 20"><path d="m10,6.105l-7,4.648v3.246c0,2.206,1.794,4,4,4h2v-3c0-.552.447-1,1-1s1,.448,1,1v3h2c2.206,0,4-1.794,4-4v-3.217l-7-4.678Z" stroke-width="0" fill="currentColor" /><path d="m17.499,8.5c-.19,0-.383-.054-.554-.168l-6.945-4.63-6.945,4.63c-.462.307-1.082.182-1.387-.277-.307-.459-.183-1.081.277-1.387L9.445,1.668c.336-.224.773-.224,1.109,0l7.5,5c.46.306.584.927.277,1.387-.192.289-.51.445-.833.445Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-id-badge" viewBox="0 0 20 20"><path d="m10,3h0c.552,0,1,.448,1,1v3h-2v-3c0-.552.448-1,1-1Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,5h1c1.105,0,2,.895,2,2v7c0,1.105-.895,2-2,2H5c-1.105,0-2-.895-2-2v-7c0-1.105.895-2,2-2h1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="6" y="10" width="3" height="3" rx=".5" ry=".5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14.5,11h-3c-.276,0-.5-.224-.5-.5s.224-.5.5-.5h3c.276,0,.5.224.5.5s-.224.5-.5.5Z" fill="currentColor" stroke-width="0" /><path d="m14.5,13h-3c-.276,0-.5-.224-.5-.5s.224-.5.5-.5h3c.276,0,.5.224.5.5s-.224.5-.5.5Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-label" viewBox="0 0 20 20"><path d="m4.72,6.4l4-3.333c.742-.618,1.819-.618,2.561,0l4,3.333c.456.38.72.943.72,1.536v6.063c0,1.657-1.343,3-3,3h-6c-1.657,0-3-1.343-3-3v-6.063c0-.594.264-1.156.72-1.536Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="10" cy="8.25" r="1.25" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-label-filled" viewBox="0 0 20 20"><path d="m15.92,5.632l-4-3.333c-1.112-.928-2.729-.928-3.841,0l-4,3.333c-.686.571-1.08,1.411-1.08,2.304v6.063c0,2.206,1.794,4,4,4h6c2.206,0,4-1.794,4-4v-6.063c0-.893-.394-1.733-1.08-2.304Zm-5.92,3.868c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-label-plus" viewBox="0 0 20 20"><circle cx="10" cy="8.25" r="1.25" stroke-width="0" fill="currentColor" /><line x1="14" y1="17" x2="14" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16,8.149v-.212c0-.594-.264-1.156-.72-1.536l-4-3.333c-.742-.618-1.819-.618-2.561,0l-4,3.333c-.456.38-.72.943-.72,1.536v6.063c0,1.657,1.343,3,3,3h2.239" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="11" y1="14" x2="17" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-language" viewBox="0 0 20 20"><line x1="3" y1="5" x2="11" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="7" y1="3" x2="7" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9.5,5c-.479,6.354-6.5,6.5-6.5,6.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m9.299,11.191c-1.819-.545-4.487-2.049-4.799-6.191" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="11.037" y1="15" x2="16.222" y2="15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="10.259 17 13.37 9 13.889 9 17 17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-laptop-video" viewBox="0 0 20 20"><path d="m18,13h-4.719c-.459,0-.859.312-.97.757l-.121.485c-.111.445-.511.757-.97.757h-2.438c-.459,0-.859-.312-.97-.757l-.121-.485c-.111-.445-.511-.757-.97-.757H2c-.552,0-1,.448-1,1,0,.123.057,3,5,3h8c4.943,0,5-2.877,5-3,0-.552-.448-1-1-1Z" stroke-width="0" fill="currentColor" /><rect x="9" y="3" width="5" height="5" rx="1.5" ry="1.5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14,14c1.105,0,2-.895,2-2v-1.164" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m5.545,4.057c-.884.207-1.545.996-1.545,1.943v6c0,1.105.895,2,2,2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="15 5.5 17 3.5 17 7.5 15 5.5 15 5.5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-layers2" viewBox="0 0 20 20"><path d="m3.034,12.231c-.111.475.072,1.01.555,1.286l5.83,3.332c.36.206.801.206,1.161,0l5.83-3.332c.483-.276.667-.811.555-1.286" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.58,3.154l5.83,3.332c.786.449.786,1.582,0,2.031l-5.83,3.332c-.36.205-.801.205-1.161,0l-5.83-3.332c-.786-.449-.786-1.582,0-2.031l5.83-3.332c.36-.205.801-.205,1.161,0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-layers2-filled" viewBox="0 0 20 20"><path d="m3.034,12.231c-.111.475.072,1.01.555,1.286l5.83,3.332c.36.206.801.206,1.161,0l5.83-3.332c.483-.276.667-.811.555-1.286" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.58,3.154l5.83,3.332c.786.449.786,1.582,0,2.031l-5.83,3.332c-.36.205-.801.205-1.161,0l-5.83-3.332c-.786-.449-.786-1.582,0-2.031l5.83-3.332c.36-.205.801-.205,1.161,0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-list-checkbox" viewBox="0 0 20 20"><polyline points="3 6 4.5 7.5 8 3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="12" width="4" height="4" rx="1" ry="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><line x1="11" y1="6" x2="17" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="11" y1="14" x2="17" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-mailbox" viewBox="0 0 20 20"><line x1="9" y1="17" x2="9" y2="15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m15,6c0,1.654-1.346,3-3,3-.552,0-1-.448-1-1s.448-1,1-1,1-.449,1-1v-.184c-.847-.302-1.519-.971-1.822-1.816h-5.178c-2.206,0-4,1.794-4,4v5.5c0,1.378,1.122,2.5,2.5,2.5h11c1.378,0,2.5-1.122,2.5-2.5v-5.5c0-1.05-.415-2-1.08-2.714-.522.439-1.186.714-1.92.714Zm-7,8h-3.5c-.276,0-.5-.224-.5-.5v-5.5c0-1.103.897-2,2-2s2,.897,2,2v6Z" stroke-width="0" fill="currentColor" /><rect x="11" y="1" width="5" height="3" rx="1" ry="1" fill="currentColor" stroke-width="0" /><line x1="12" y1="3" x2="12" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-msg" viewBox="0 0 20 20"><path d="m10,3c-3.866,0-7,3.134-7,7,0,1.376.403,2.655,1.088,3.737l-1.088,3.263,3.263-1.088c1.082.685,2.361,1.088,3.737,1.088,3.866,0,7-3.134,7-7s-3.134-7-7-7Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-msg-bubble-user" viewBox="0 0 20 20"><path d="m13.475,8.439l-1.414-1.414c-.122-.123-.3-.172-.468-.133-.169.04-.305.164-.359.329l-.707,2.121c-.06.18-.013.378.121.512.095.095.223.146.354.146.053,0,.106-.008.158-.026l2.121-.707c.165-.055.289-.19.329-.359.04-.168-.011-.346-.133-.468Z" fill="currentColor" stroke-width="0" /><circle cx="6.5" cy="9" r="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m2.626,17c.444-1.725,2.01-3,3.874-3s3.43,1.275,3.874,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="14.5" cy="6" r="3" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-msg-filled" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10c0,1.44.388,2.789,1.057,3.958l-1.018,3.055c-.09.27-.02.567.181.768.143.143.334.22.53.22.08,0,.16-.013.237-.039l3.055-1.018c1.169.669,2.518,1.057,3.958,1.057,4.411,0,8-3.589,8-8S14.411,2,10,2Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-msg-smile2" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10c0,1.44.388,2.789,1.057,3.958l-1.018,3.055c-.09.27-.02.567.181.768.143.143.334.22.53.22.08,0,.16-.013.237-.039l3.055-1.018c1.169.669,2.518,1.057,3.958,1.057,4.411,0,8-3.589,8-8S14.411,2,10,2Zm-3.25,9.5c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Zm3.25,3.5c-1.104,0-2-.896-2-2,0-.368.299-.667.667-.667h2.667c.368,0,.667.299.667.667,0,1.104-.896,2-2,2Zm3.25-3.5c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-office3" viewBox="0 0 20 20"><path d="m15,7h-6c-1.103,0-2,.897-2,2v8h10v-8c0-1.103-.897-2-2-2Zm-4,7c0,.552-.447,1-1,1s-1-.448-1-1v-.5c0-.552.447-1,1-1s1,.448,1,1v.5Zm0-3.5c0,.552-.447,1-1,1s-1-.448-1-1v-.5c0-.552.447-1,1-1s1,.448,1,1v.5Zm4,3.5c0,.552-.447,1-1,1s-1-.448-1-1v-.5c0-.552.447-1,1-1s1,.448,1,1v.5Zm0-3.5c0,.552-.447,1-1,1s-1-.448-1-1v-.5c0-.552.447-1,1-1s1,.448,1,1v.5Z" stroke-width="0" fill="currentColor" /><path d="m4,17V4.754c0-.446.296-.839.725-.962l5-1.429c.639-.183,1.275.297,1.275.962v1.674" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="17" x2="17" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-ordered-list" viewBox="0 0 20 20"><path d="m5,8.5V3.5s-.611,1.134-2,1.467" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="6" x2="17" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="14" x2="17" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3.596,12.082s.474-.582,1.333-.582c.962,0,1.355.729,1.355,1.207,0,.316-.038.682-.558,1.293l-2.13,2.5h2.808" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-page" viewBox="0 0 20 20"><rect x="4" y="3" width="12" height="14" rx="3" ry="3" transform="translate(20 20) rotate(180)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="7" y="6" width="2" height="2" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m13.25,9h-1.5c-.4141,0-.75-.3359-.75-.75s.3359-.75.75-.75h1.5c.4141,0,.75.3359.75.75s-.3359.75-.75.75Z" fill="currentColor" stroke-width="0" /><path d="m13.25,11.5h-6.5c-.4141,0-.75-.3359-.75-.75s.3359-.75.75-.75h6.5c.4141,0,.75.3359.75.75s-.3359.75-.75.75Z" fill="currentColor" stroke-width="0" /><path d="m11.25,14h-4.5c-.4141,0-.75-.3359-.75-.75s.3359-.75.75-.75h4.5c.4141,0,.75.3359.75.75s-.3359.75-.75.75Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-paperclip" viewBox="0 0 20 20"><path d="m8,7v4c0,1.105.895,2,2,2h0c1.105,0,2-.895,2-2v-4c0-2.209-1.791-4-4-4h0c-2.209,0-4,1.791-4,4v4c0,3.314,2.686,6,6,6h0c3.314,0,6-2.686,6-6v-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-paper-plane2" viewBox="0 0 20 20"><line x1="11.292" y1="8.708" x2="8.351" y2="11.649" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16.942,4.442l-3.937,11.81c-.301.903-1.532,1.017-1.994.185l-2.66-4.788-4.788-2.66c-.832-.462-.718-1.693.185-1.994l11.81-3.937c.855-.285,1.669.529,1.384,1.384Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-party" viewBox="0 0 20 20"><path d="m17.722,4.529l-1.521-.752-.752-1.521c-.168-.341-.729-.341-.896,0l-.752,1.521-1.521.752c-.171.084-.278.258-.278.448s.107.364.278.448l1.521.752.752,1.521c.084.17.258.278.448.278s.364-.108.448-.278l.752-1.521,1.521-.752c.171-.084.278-.258.278-.448s-.107-.364-.278-.448Z" fill="currentColor" stroke-width="0" /><circle cx="9.25" cy="3.25" r="1.25" fill="currentColor" stroke-width="0" /><circle cx="16.75" cy="10.75" r="1.25" fill="currentColor" stroke-width="0" /><path d="m3.044,15.72l2.745-9.017c.218-.715,1.118-.94,1.647-.412l6.274,6.274c.529.529.303,1.429-.412,1.647l-9.018,2.745c-.757.231-1.466-.477-1.235-1.235h0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-pen-nib2" viewBox="0 0 20 20"><line x1="3.59" y1="16.41" x2="8.323" y2="11.677" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="9.5" y1="2.5" x2="17.5" y2="10.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="9" cy="11" r="1" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m16,9l-1.626,4.877c-.231.693-.821,1.205-1.54,1.335l-8.414,1.53c-.687.125-1.288-.475-1.163-1.163l1.53-8.414c.131-.718.642-1.309,1.335-1.54l4.877-1.626" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-pen-sparkle" viewBox="0 0 20 20"><path d="m15.8653,8.1347l.5489-.5489c.7811-.7811.7811-2.0474,0-2.8284l-1.1716-1.1716c-.781-.7811-2.0474-.7811-2.8284,0L4,12l-1,5,5-1,1.1598-1.1598" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="5.25" cy="5.25" r="1.25" fill="currentColor" stroke-width="0" /><path d="m16.5958,12.3628l-1.4438-.5415-.542-1.4438c-.1879-.5034-1.0185-.5034-1.2064,0l-.542,1.4438-1.4438.5415c-.2508.0944-.4178.3347-.4178.6032s.167.5088.4178.6032l1.4438.5415.542,1.4438c.094.2517.3347.4182.6032.4182s.5092-.1665.6032-.4182l.542-1.4438,1.4438-.5415c.2508-.0944.4178-.3347.4178-.6032s-.167-.5088-.4178-.6032Z" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-pen-writing" viewBox="0 0 20 20"><line x1="17" y1="17" x2="12" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,17l1-5L12.414,3.586c.781-.781,2.047-.781,2.828,0l1.172,1.172c.781.781.781,2.047,0,2.828l-8.414,8.414-5,1Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-pen-writing-filled" viewBox="0 0 20 20"><line x1="17" y1="17" x2="12" y2="17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,17l1-4.5L12.914,3.586c.781-.781,2.047-.781,2.828,0l.672.672c.781.781.781,2.047,0,2.828l-8.914,8.914-4.5,1Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-person-walking" viewBox="0 0 20 20"><circle cx="11.5" cy="3.5" r="2" fill="currentColor" stroke-width="0" /><path d="m9.161,12.269c-.184,0-.37-.029-.554-.09-.917-.306-1.413-1.296-1.107-2.213l.911-2.734c.306-.917,1.299-1.412,2.213-1.107.917.306,1.413,1.296,1.107,2.213l-.911,2.734c-.244.733-.927,1.197-1.66,1.197Z" stroke-width="0" fill="currentColor" /><polyline points="10.038 7.032 7 7.25 5.5 9.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="10.635 7.276 12.5 9.75 14.75 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="8.614 11.037 11.25 13.75 11.75 17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="6.25 17.25 7.75 15 7.857 14.001" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-person-wheelchair" viewBox="0 0 20 20"><circle cx="13" cy="3.5" r="2" fill="currentColor" stroke-width="0" /><path d="m10.661,12.269c-.184,0-.37-.029-.554-.09-.917-.306-1.413-1.296-1.107-2.213l.911-2.734c.306-.917,1.299-1.412,2.213-1.107.917.306,1.413,1.296,1.107,2.213l-.911,2.734c-.244.733-.927,1.197-1.66,1.197Z" stroke-width="0" fill="currentColor" /><polyline points="11.538 7.032 8.5 7.25 7 9.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m4.73,11.207c-.457.65-.73,1.438-.73,2.293,0,2.209,1.791,4,4,4,1.707,0,3.154-1.074,3.728-2.579" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="10.5 11.25 14 12.25 15.25 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-photo" viewBox="0 0 20 20"><path d="m17,11.586l-2.732-2.732c-.975-.975-2.561-.975-3.535,0l-6.994,6.994c-.017.017-.022.041-.037.059.55.663,1.37,1.093,2.298,1.093h8c1.657,0,3-1.343,3-3v-2.414Z" fill="currentColor" stroke-width="0" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" transform="translate(0 20) rotate(-90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="7.5" cy="7.5" r="1.5" fill="currentColor" stroke-width="0" /></symbol>
+  <symbol id="i-photo-filled" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4Zm-7.25,3.5c.69,0,1.25.56,1.25,1.25s-.56,1.25-1.25,1.25-1.25-.56-1.25-1.25.56-1.25,1.25-1.25Zm7.25,10.5H6c-.688,0-1.296-.349-1.656-.88l5.888-5.888c.943-.944,2.591-.944,3.536,0l2.232,2.232v2.536c0,1.103-.897,2-2,2Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-print" viewBox="0 0 20 20"><path d="m7,7v-2.5c0-.828.672-1.5,1.5-1.5h3c.828,0,1.5.672,1.5,1.5v2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m15.5,7H4.5c-.828,0-1.5.672-1.5,1.5v3c0,.828.672,1.5,1.5,1.5h2.5v-3h6v3h2.5c.828,0,1.5-.672,1.5-1.5v-3c0-.828-.672-1.5-1.5-1.5Zm-.5,3c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Z" stroke-width="0" fill="currentColor" /><path d="m7,13h-2.5c-.828,0-1.5-.672-1.5-1.5v-3c0-.828.672-1.5,1.5-1.5h11c.828,0,1.5.672,1.5,1.5v3c0,.828-.672,1.5-1.5,1.5h-2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m7,10h6v5.5c0,.828-.672,1.5-1.5,1.5h-3c-.828,0-1.5-.672-1.5-1.5v-5.5h0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-progress-bar" viewBox="0 0 20 20"><polygon points="12.5 3 10 6 7.5 3 12.5 3" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m15,9H5c-2.206,0-4,1.794-4,4s1.794,4,4,4h10c2.206,0,4-1.794,4-4s-1.794-4-4-4Zm-5,5h-5c-.552,0-1-.448-1-1s.448-1,1-1h5c.552,0,1,.448,1,1s-.448,1-1,1Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-radio-checked" viewBox="0 0 20 20"><path d="m10,2C5.589,2,2,5.589,2,10s3.589,8,8,8,8-3.589,8-8S14.411,2,10,2Zm0,11c-1.657,0-3-1.343-3-3s1.343-3,3-3,3,1.343,3,3-1.343,3-3,3Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-radio-unchecked" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-rect-layout-grid3-filled" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4ZM4,14v-6h3v8h-1c-1.103,0-2-.897-2-2Zm10,2h-5v-8h7v6c0,1.103-.897,2-2,2Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-refresh" viewBox="0 0 20 20"><path d="m4,10c0,3.314,2.686,6,6,6,1.227,0,2.367-.368,3.317-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="14.25 10 16 12 17.75 10 14.25 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m16,10c0-3.314-2.686-6-6-6-1.227,0-2.367.368-3.317,1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="5.75 10 4 8 2.25 10 5.75 10" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-refresh-anticlockwise" viewBox="0 0 20 20"><polygon points="4.367 3.044 3.771 6.798 7.516 6.145 4.367 3.044" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m5.101,5c1.263-1.237,2.992-2,4.899-2,3.866,0,7,3.134,7,7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14.899,15c-1.263,1.237-2.992,2-4.899,2-3.866,0-7-3.134-7-7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="15.633 16.956 16.229 13.202 12.484 13.855 15.633 16.956" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-repeat2" viewBox="0 0 20 20"><path d="m10,6h-4c-1.657,0-3,1.343-3,3v2c0,1.657,1.343,3,3,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10,14h4c1.657,0,3-1.343,3-3v-2c0-1.657-1.343-3-3-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="12.75 11.25 10 14 12.75 16.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="7.25 8.75 10 6 7.25 3.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-rotate-obj-anticlockwise" viewBox="0 0 20 20"><rect x="4" y="9" width="8" height="8" rx="2" ry="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m11,4h2c1.657,0,3,1.343,3,3v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="11 5.75 9 4 11 2.25 11 5.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-rotate-obj-clockwise" viewBox="0 0 20 20"><rect x="8" y="9" width="8" height="8" rx="2" ry="2" transform="translate(24 26) rotate(-180)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m9,4h-2c-1.657,0-3,1.343-3,3v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="9 5.75 11 4 9 2.25 9 5.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-saved-items" viewBox="0 0 20 20"><polygon points="7 3 13 3 13 11 10 8 7 11 7 3" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-side-profile-heart" viewBox="0 0 20 20"><path d="m17.781,10.875l-1.802-2.253c-.106-1.974-1.021-3.801-2.567-5.058-1.645-1.336-3.798-1.848-5.911-1.408-2.672.558-4.825,2.734-5.358,5.414-.645,3.236.96,6.383,3.857,7.749v1.68c0,.552.447,1,1,1h4c.553,0,1-.448,1-1v-1h1c1.654,0,3-1.346,3-3v-.219l1.242-.311c.331-.083.597-.328.705-.65.109-.323.046-.679-.166-.944Zm-8.347-.03c-.258.198-.612.206-.877.018-.897-.636-2.468-2.033-2.543-3.687,0-.907.726-1.632,1.633-1.632.544,0,1.088.272,1.36.726.356-.445.8-.716,1.332-.725.854-.015,1.541.546,1.647,1.394.199,1.598-1.681,3.24-2.551,3.907Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-signature" viewBox="0 0 20 20"><path d="m9,17c1.654-2.937,2.535-3.694,3.018-3.543.774.241.549,2.831,1.368,2.982.604.112,1.139-1.219,1.789-1.053.525.134.493,1.08,1.087,1.263.239.073.496,0,.737-.135" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m6,14l-1.5,3-1.5-3V4c0-.552.448-1,1-1h1c.552,0,1,.448,1,1v10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m4,6h3.5c.828,0,1.5.672,1.5,1.5v3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-skull" viewBox="0 0 20 20"><path d="m10,2c-3.86,0-7,3.14-7,7,0,1.902.765,3.627,2,4.89v1.11c0,1.654,1.346,3,3,3h4c1.654,0,3-1.346,3-3v-1.11c1.235-1.263,2-2.988,2-4.89,0-3.86-3.14-7-7-7Zm-3.25,9.5c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Zm4.957,2.207c-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-.293-.293-.293.293c-.391.391-1.023.391-1.414,0s-.391-1.023,0-1.414l1-1c.391-.391,1.023-.391,1.414,0l1,1c.391.391.391,1.023,0,1.414Zm1.543-2.207c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25.56,1.25,1.25-.56,1.25-1.25,1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-slider" viewBox="0 0 20 20"><line x1="3" y1="6" x2="10" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="12.5" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="15" y1="6" x2="17" y2="6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="17" y1="14" x2="10" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="7.5" cy="14" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="5" y1="14" x2="3" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-sort-bottom-to-middle" viewBox="0 0 20 20"><line x1="3" y1="10" x2="7" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="5" x2="17" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,15h11.5c1.381,0,2.5-1.119,2.5-2.5h0c0-1.381-1.119-2.5-2.5-2.5h-1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="12 11.75 10 10 12 8.25 12 11.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-sort-bottom-to-top2" viewBox="0 0 20 20"><line x1="3" y1="10" x2="7" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="5" x2="7" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,15h11c1.657,0,3-1.343,3-3v-4c0-1.657-1.343-3-3-3h-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="12 6.75 10 5 12 3.25 12 6.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-sort-middle-to-top" viewBox="0 0 20 20"><line x1="3" y1="5" x2="7" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="15" x2="17" y2="15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3,10h11.5c1.381,0,2.5-1.119,2.5-2.5h0c0-1.381-1.119-2.5-2.5-2.5h-1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="12 6.75 10 5 12 3.25 12 6.75" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-sort-obj-bottom-to-top" viewBox="0 0 20 20"><rect x="12" y="12" width="5" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="12" y="3" width="5" height="5" rx="1.5" ry="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m7.5,14.5c-2.485,0-4.5-2.015-4.5-4.5s2.015-4.5,4.5-4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="7 7.25 9 5.5 7 3.75 7 7.25" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-square-kanban" viewBox="0 0 20 20"><path d="m14,2H6c-2.206,0-4,1.794-4,4v8c0,2.206,1.794,4,4,4h8c2.206,0,4-1.794,4-4V6c0-2.206-1.794-4-4-4Zm-5,12c0,.553-.447,1-1,1h-2c-.553,0-1-.447-1-1V6c0-.553.447-1,1-1h2c.553,0,1,.447,1,1v8Zm6-5c0,.553-.447,1-1,1h-2c-.553,0-1-.447-1-1v-3c0-.553.447-1,1-1h2c.553,0,1,.447,1,1v3Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-square-layout-grid" viewBox="0 0 20 20"><line x1="10" y1="17" x2="10" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="10" x2="17" y2="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" transform="translate(0 20) rotate(-90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-square-layout-grid3" viewBox="0 0 20 20"><line x1="10" y1="17" x2="10" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="8" x2="17" y2="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="3" y1="12" x2="10" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" transform="translate(0 20) rotate(-90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-stack-filled" viewBox="0 0 20 20"><rect x="1" y="5" width="14" height="10" rx="1.5" ry="1.5" transform="translate(-2 18) rotate(-90)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><line x1="17" y1="15" x2="17" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-stack-perspective2" viewBox="0 0 20 20"><path d="m4.217,5.77l7,1.556c.458.102.783.507.783.976v7.951c0,.64-.592,1.115-1.217.976l-7-1.556c-.458-.102-.783-.507-.783-.976v-7.951c0-.64.592-1.115,1.217-.976Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m15,14.056l.783.174c.625.139,1.217-.336,1.217-.976v-7.951c0-.469-.326-.875-.783-.976l-7-1.556c-.556-.123-1.084.24-1.193.773" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-star" viewBox="0 0 20 20"><path d="m10.763,3.038l1.779,3.604,3.979.578c.698.101.977.959.472,1.452l-2.879,2.806.68,3.962c.119.695-.61,1.225-1.235.897l-3.558-1.87-3.558,1.87c-.624.328-1.354-.202-1.235-.897l.68-3.962-2.879-2.806c-.505-.492-.226-1.35.472-1.452l3.979-.578,1.779-3.604c.312-.633,1.214-.633,1.526,0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-star-lock" viewBox="0 0 20 20"><path d="m7.5,15.781l-1.058.556c-.624.328-1.354-.202-1.235-.897l.68-3.962-2.879-2.806c-.505-.492-.226-1.35.472-1.452l3.979-.578,1.779-3.604c.312-.633,1.214-.633,1.526,0l1.779,3.604,3.979.578" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m12,14v-2c0-1.105.895-2,2-2h0c1.105,0,2,.895,2,2v2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="11" y="14" width="6" height="3" rx=".5" ry=".5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-storage" viewBox="0 0 20 20"><path d="m3.102,10.492c.549,1.422,3.424,2.508,6.898,2.508s6.349-1.086,6.898-2.508" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m3.102,14.492c.549,1.422,3.424,2.508,6.898,2.508s6.349-1.086,6.898-2.508" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><ellipse cx="10" cy="6" rx="7" ry="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-swap" viewBox="0 0 20 20"><path d="m14,3c1.105,0,2,.895,2,2v1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m6,17c-1.105,0-2-.895-2-2v-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="17.75 6 16 8 14.25 6 17.75 6" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polygon points="2.25 14 4 12 5.75 14 2.25 14" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.983,6.67c.003-.058.017-.112.017-.17,0-1.933-1.567-3.5-3.5-3.5s-3.5,1.567-3.5,3.5c0,1.597,1.077,2.93,2.539,3.349" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="12.5" cy="13.5" r="3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-tabs-minus" viewBox="0 0 20 20"><path d="m14,3h-4v4c0,.553.447,1,1,1h6v-2c0-1.657-1.343-3-3-3Z" fill="currentColor" stroke-width="0" /><path d="m17,10.5v-4.5c0-1.657-1.343-3-3-3H6c-1.657,0-3,1.343-3,3v8c0,1.657,1.343,3,3,3h3.224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="11" y1="14" x2="17" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-tabs-plus" viewBox="0 0 20 20"><path d="m14,3h-4v4c0,.553.447,1,1,1h6v-2c0-1.657-1.343-3-3-3Z" fill="currentColor" stroke-width="0" /><line x1="14" y1="17" x2="14" y2="11" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,9.24v-3.24c0-1.657-1.343-3-3-3H6c-1.657,0-3,1.343-3,3v8c0,1.657,1.343,3,3,3h3.24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="11" y1="14" x2="17" y2="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-thumbs-up" viewBox="0 0 20 20"><path d="m14.438,16h-5.438c-1.105,0-2-.895-2-2v-4c0-1.105.895-2,2-2h6.438c1.301,0,2.256,1.223,1.94,2.485l-1,4c-.223.89-1.023,1.515-1.94,1.515Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m7,9l4-6.5h0c.601.451.858,1.228.645,1.948l-1.645,5.552-3-1Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><rect x="3" y="8" width="4" height="8" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-timeline-vertical2" viewBox="0 0 20 20"><line x1="4" y1="17" x2="4" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="4" cy="10" r="2.5" fill="currentColor" stroke-width="0" /><rect x="8" y="3" width="9" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="8" y="12" width="9" height="5" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-toggle3" viewBox="0 0 20 20"><path d="m12.5,4h-5c-3.309,0-6,2.691-6,6s2.691,6,6,6h5c3.309,0,6-2.691,6-6s-2.691-6-6-6Zm-5,10c-2.209,0-4-1.791-4-4s1.791-4,4-4,4,1.791,4,4-1.791,4-4,4Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-trash" viewBox="0 0 20 20"><line x1="17" y1="5" x2="3" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="8" y="3" width="4" height="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m14.95,8l-.355,7.1c-.053,1.064-.932,1.9-1.998,1.9h-5.195c-1.066,0-1.944-.836-1.998-1.9l-.355-7.1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-trash-filled" viewBox="0 0 20 20"><rect x="8" y="3" width="4" height="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><path d="m4.299,8l.358,7.149c.079,1.599,1.396,2.851,2.996,2.851h4.695c1.601,0,2.917-1.252,2.996-2.851l.358-7.149H4.299Z" stroke-width="0" fill="currentColor" /><line x1="17" y1="5" x2="3" y2="5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-triangle-warning" viewBox="0 0 20 20"><path d="m9,8c0-.552.447-1,1-1s1,.448,1,1v4.5c0,.552-.447,1-1,1s-1-.448-1-1v-4.5Z" fill="currentColor" stroke-width="0" /><circle cx="10" cy="15.75" r="1.25" fill="currentColor" stroke-width="0" /><path d="m13.725,16h1.471c1.54,0,2.502-1.667,1.732-3l-5.196-9c-.77-1.333-2.694-1.333-3.464,0L3.072,13c-.77,1.333.192,3,1.732,3h1.471" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-triangle-warning-filled" viewBox="0 0 20 20"><path d="m17.794,12.5L12.598,3.5c-.542-.939-1.514-1.5-2.598-1.5s-2.056.561-2.598,1.5L2.206,12.5c-.542.938-.543,2.061,0,3,.542.939,1.514,1.5,2.598,1.5h10.393c1.084,0,2.056-.561,2.598-1.5.542-.939.542-2.062,0-3Zm-8.794-5.5c0-.552.447-1,1-1s1,.448,1,1v3.5c0,.552-.447,1-1,1s-1-.448-1-1v-3.5Zm1,8c-.689,0-1.25-.561-1.25-1.25s.561-1.25,1.25-1.25,1.25.561,1.25,1.25-.561,1.25-1.25,1.25Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-upload" viewBox="0 0 20 20"><polyline points="7.25 5.75 10 3 12.75 5.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><line x1="10" y1="13" x2="10" y2="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m6,9.07c-1.216.268-2.168,1.277-2.328,2.557l-.25,2c-.224,1.791,1.172,3.372,2.977,3.372h7.203c1.804,0,3.201-1.582,2.977-3.372l-.25-2c-.16-1.281-1.113-2.289-2.328-2.557" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-user" viewBox="0 0 20 20"><circle cx="10" cy="6" r="3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m4,15.393c1.225-2.033,3.454-3.393,6-3.393s4.775,1.36,6,3.393" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-user-filled" viewBox="0 0 20 20"><circle cx="10" cy="5.5" r="2.5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m14.664,16.455c.947-.221,1.469-1.303.991-2.15-1.114-1.973-3.227-3.305-5.655-3.305s-4.541,1.332-5.655,3.305c-.478.847.044,1.929.991,2.15,3.11.727,6.219.727,9.329,0Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-users" viewBox="0 0 20 20"><circle cx="6.5" cy="8.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><circle cx="13.5" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m10.875,11.845c.739-.532,1.645-.845,2.625-.845,1.959,0,3.626,1.252,4.244,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m2.256,17c.618-1.748,2.285-3,4.244-3s3.626,1.252,4.244,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-users-filled" viewBox="0 0 20 20"><circle cx="6.5" cy="8" r="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><circle cx="13.5" cy="5" r="2" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m18.16,12.226c-.744-1.96-2.573-3.226-4.66-3.226-1.509,0-2.876.669-3.803,1.776,1.498.77,2.699,2.071,3.332,3.74.058.153.092.309.127.465.115.005.229.02.344.02,1.297,0,2.594-.299,3.881-.898.711-.331,1.053-1.155.778-1.876Z" fill="currentColor" stroke-width="0" /><path d="m11.16,15.226c-.744-1.96-2.573-3.226-4.66-3.226s-3.916,1.266-4.66,3.226c-.275.722.067,1.546.778,1.877,1.288.599,2.584.898,3.881.898s2.594-.299,3.881-.898c.711-.331,1.053-1.155.778-1.876Z" stroke-width="0" fill="currentColor" /></symbol>
+  <symbol id="i-view-all" viewBox="0 0 20 20"><rect x="3" y="3" width="7" height="6" rx="1" ry="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /><rect x="14" y="6" width="3" height="10" rx="1" ry="1" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><rect x="5" y="13" width="5" height="4" rx="1" ry="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" /></symbol>
+  <symbol id="i-window" viewBox="0 0 20 20"><path d="m14,3H6c-1.657,0-3,1.343-3,3v2h14v-2c0-1.657-1.343-3-3-3Zm-8,3c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Zm3,0c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Z" stroke-width="0" fill="currentColor" /><rect x="3" y="3" width="14" height="14" rx="3" ry="3" transform="translate(0 20) rotate(-90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+  <symbol id="i-window-code2" viewBox="0 0 20 20"><path d="m14,3H6c-1.657,0-3,1.343-3,3v2h14v-2c0-1.657-1.343-3-3-3Zm-8,3c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Zm3,0c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Z" stroke-width="0" fill="currentColor" /><polyline points="12.5 12 10 14.5 12.5 17" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="m17,8.845v-2.845c0-1.657-1.343-3-3-3H6c-1.657,0-3,1.343-3,3v8c0,1.657,1.343,3,3,3h1.55l-.025-.025" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><polyline points="15.5 17 18 14.5 15.5 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></symbol>
+</svg>
+
+<div class="doc">
+
+  <nav class="doc-nav no-scrollbar" aria-label="Design system sections">
+    <p class="overline nav-label">Overview</p>
+    <a class="nav-item" href="#principles">Principles</a>
+    <p class="overline nav-label">Foundations</p>
+    <a class="nav-item" href="#color">Color</a>
+    <a class="nav-item" href="#typography">Typography</a>
+    <a class="nav-item" href="#spacing">Spacing</a>
+    <a class="nav-item" href="#radius">Radius</a>
+    <a class="nav-item" href="#borders">Borders &amp; layout</a>
+    <a class="nav-item" href="#icons">Iconography</a>
+    <p class="overline nav-label">Components</p>
+    <a class="nav-item" href="#button">Button</a>
+    <a class="nav-item" href="#nav-item">Navigation item</a>
+    <a class="nav-item" href="#input">Input</a>
+    <a class="nav-item" href="#small">Icon button · Badge · Divider</a>
+    <a class="nav-item" href="#card">Card</a>
+    <a class="nav-item" href="#toggle">Toggle</a>
+    <a class="nav-item" href="#scrollbar">Scrollbar</a>
+    <p class="overline nav-label">Patterns</p>
+    <a class="nav-item" href="#shell">App shell</a>
+    <a class="nav-item" href="#content-header">Content header</a>
+    <a class="nav-item" href="#settings">Settings section</a>
+    <a class="nav-item" href="#empty">Empty state</a>
+    <p class="overline nav-label">Reference</p>
+    <a class="nav-item" href="#tokens">Tokens (CSS)</a>
+  </nav>
+
+  <main class="doc-main">
+
+    <!-- INTRO ===================================================== -->
+    <header class="doc-intro">
+      <p class="overline">Design system</p>
+      <h1 class="t-xl w-medium c-strong">Design System</h1>
+      <p class="t-sm c-default lead">Quiet, monochromatic UI language. Hierarchy comes from type, spacing, and contrast — never from accent color.</p>
+      <div class="doc-meta">
+        <span class="badge is-selected">v1.0</span>
+        <span class="badge">SF Pro</span>
+        <span class="badge">Nucleo Micro Bold</span>
+        <span class="badge">Light theme</span>
+      </div>
+    </header>
+
+    <!-- PRINCIPLES ================================================ -->
+    <section class="doc-section" id="principles">
+      <div class="doc-section-head">
+        <p class="overline">Principles</p>
+        <h2 class="t-lg w-medium c-strong">Six rules that decide everything else</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><p class="overline">01</p><p class="t-md w-medium c-strong">Monochrome only</p><p class="t-sm c-default">Seven grays. No brand or accent color in UI chrome. Emphasis is a darker gray or a heavier weight.</p></div>
+        <div class="card"><p class="overline">02</p><p class="t-md w-medium c-strong">Every value is a token</p><p class="t-sm c-default">Color, size, space, radius — nothing hard-coded. If a value isn't in the token list, it isn't in the system.</p></div>
+        <div class="card"><p class="overline">03</p><p class="t-md w-medium c-strong">40px is the control constant</p><p class="t-sm c-default">Buttons, inputs, nav items and icon buttons all share one height so rows line up without thinking.</p></div>
+        <div class="card"><p class="overline">04</p><p class="t-md w-medium c-strong">Borders, not shadows</p><p class="t-sm c-default">Surfaces separate with a 1px #F2F2F2 line. No drop shadows by default.</p></div>
+        <div class="card"><p class="overline">05</p><p class="t-md w-medium c-strong">Two weights</p><p class="t-sm c-default">Regular 400 for reading, Medium 500 for emphasis, labels and buttons. Nothing heavier in product UI.</p></div>
+        <div class="card"><p class="overline">06</p><p class="t-md w-medium c-strong">Pills are reserved</p><p class="t-sm c-default">Full radius only for buttons, badges and toggles. Everything else uses the 4–24px scale.</p></div>
+      </div>
+    </section>
+
+    <!-- COLOR ===================================================== -->
+    <section class="doc-section" id="color">
+      <div class="doc-section-head">
+        <p class="overline">Color</p>
+        <h2 class="t-lg w-medium c-strong">Neutral grayscale</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-background)"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">background</span><span class="spec">#FFFFFF · also surface</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-surface-subtle)"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">surface-subtle</span><span class="spec">#FAFAFA</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-background-selected)"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">background-selected</span><span class="spec">#F5F5F5</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-border)"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">border / divider</span><span class="spec">#F2F2F2</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-text-subtle);border-color:transparent"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">text-subtle</span><span class="spec">#7F7F7F</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-text-default);border-color:transparent"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">text-default / icon</span><span class="spec">#5D5D5D</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-text-strong);border-color:transparent"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">text-strong / inverse</span><span class="spec">#292929 · also icon-strong</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--color-on-inverse)"></div><div class="swatch-meta"><span class="t-sm w-medium c-strong">on-inverse</span><span class="spec">#FFFFFF</span></div></div>
+      </div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Use</th><th>Contrast on white</th></tr></thead>
+          <tbody>
+            <tr><td><code>--color-background</code></td><td>#FFFFFF</td><td>Page canvas</td><td>—</td></tr>
+            <tr><td><code>--color-surface</code></td><td>#FFFFFF</td><td>Cards, inputs, top bar, sidebar</td><td>—</td></tr>
+            <tr><td><code>--color-surface-subtle</code></td><td>#FAFAFA</td><td>Quiet wells, hover on nav</td><td>—</td></tr>
+            <tr><td><code>--color-background-selected</code></td><td>#F5F5F5</td><td>Selected nav item, selected badge, toggle off</td><td>—</td></tr>
+            <tr><td><code>--color-border</code> · <code>--color-divider</code></td><td>#F2F2F2</td><td>All 1px lines</td><td>1.1 : 1</td></tr>
+            <tr><td><code>--color-text-subtle</code></td><td>#7F7F7F</td><td>Metadata, overlines, placeholders</td><td>4.0 : 1</td></tr>
+            <tr><td><code>--color-text-default</code> · <code>--color-icon</code></td><td>#5D5D5D</td><td>Body text, default icons</td><td>6.6 : 1</td></tr>
+            <tr><td><code>--color-text-strong</code> · <code>--color-icon-strong</code> · <code>--color-inverse</code></td><td>#292929</td><td>Headings, selected states, primary button fill</td><td>14.5 : 1</td></tr>
+            <tr><td><code>--color-on-inverse</code></td><td>#FFFFFF</td><td>Text/icons on inverse</td><td>14.5 : 1 on #292929</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note t-sm c-default"><span class="w-medium c-strong">Accessibility note.</span> #7F7F7F is 4.0 : 1 on white — fine for 18px+ text, below AA for 12–13px body copy. Use text-subtle only for non-essential metadata. Input borders (#F2F2F2) don't meet 3 : 1 non-text contrast; the input's placeholder and focus border carry the affordance.</p>
+    </section>
+
+    <!-- TYPOGRAPHY ================================================ -->
+    <section class="doc-section" id="typography">
+      <div class="doc-section-head">
+        <p class="overline">Typography</p>
+        <h2 class="t-lg w-medium c-strong">SF Pro · Regular 400 / Medium 500</h2>
+        <p class="t-sm c-default">Tracking −0.01em default, −0.02em on 24px headings, 0em on 12px UI.</p>
+      </div>
+      <div>
+        <div class="type-row"><span class="spec">xs</span><span class="spec">12 / 16 · 0em</span><span class="t-xs c-strong">Metadata · captions · secondary UI</span></div>
+        <div class="type-row"><span class="spec">sm</span><span class="spec">13 / 18 · −0.01em</span><span class="t-sm c-strong">Default UI text</span></div>
+        <div class="type-row"><span class="spec">md</span><span class="spec">14 / 20 · −0.01em</span><span class="t-md w-medium c-strong">Emphasized UI · navigation</span></div>
+        <div class="type-row"><span class="spec">base</span><span class="spec">16 / 24 · −0.01em</span><span class="t-base w-medium c-strong">Larger body · prominent buttons</span></div>
+        <div class="type-row"><span class="spec">lg</span><span class="spec">18 / 24 · −0.01em</span><span class="t-lg w-medium c-strong">Section-level text</span></div>
+        <div class="type-row"><span class="spec">xl</span><span class="spec">24 / 32 · −0.02em</span><span class="t-xl w-medium c-strong">Page headings</span></div>
+      </div>
+      <div class="grid grid-2">
+        <div class="stage stage-white">
+          <p class="overline">Weights</p>
+          <div>
+            <div class="weight-row"><span class="spec">100 · ultralight</span><span class="t-lg c-strong" style="font-weight:var(--weight-ultralight)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">200 · thin</span><span class="t-lg c-strong" style="font-weight:var(--weight-thin)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">300 · light</span><span class="t-lg c-strong" style="font-weight:var(--weight-light)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">400 · regular</span><span class="t-lg c-strong" style="font-weight:var(--weight-regular)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">500 · medium</span><span class="t-lg c-strong" style="font-weight:var(--weight-medium)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">600 · semibold</span><span class="t-lg c-strong" style="font-weight:var(--weight-semibold)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">700 · bold</span><span class="t-lg c-strong" style="font-weight:var(--weight-bold)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">800 · heavy</span><span class="t-lg c-strong" style="font-weight:var(--weight-heavy)">Aa Bb Cc 0123</span></div>
+            <div class="weight-row"><span class="spec">900 · black</span><span class="t-lg c-strong" style="font-weight:var(--weight-black)">Aa Bb Cc 0123</span></div>
+          </div>
+          <p class="spec">Product UI uses Regular 400 and Medium 500. The other weights are in the files if you need them.</p>
+        </div>
+        <div class="stage stage-white">
+          <p class="overline">Families · ../fonts/sf-pro</p>
+          <div>
+            <div class="family"><span class="t-lg c-strong" style="font-family:'SF Pro'">SF Pro — variable</span><span class="spec">SF-Pro.ttf + SF-Pro-Italic.ttf · weight 1–1000 · optical size 17–28, switches Text ↔ Display on its own · <code>--font-sans</code>, <code>--font-display</code></span></div>
+            <div class="family"><span class="t-lg c-strong" style="font-family:'SF Pro Text'">SF Pro Text</span><span class="spec">Static · 9 weights + italics · fallback for sizes under 20px</span></div>
+            <div class="family"><span class="t-lg c-strong" style="font-family:'SF Pro Display'">SF Pro Display</span><span class="spec">Static · 9 weights + italics · fallback for 20px and up</span></div>
+            <div class="family"><span class="t-lg c-strong" style="font-family:'SF Pro Rounded'">SF Pro Rounded</span><span class="spec">Static · 9 weights, no italics · <code>--font-rounded</code></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING =================================================== -->
+    <section class="doc-section" id="spacing">
+      <div class="doc-section-head">
+        <p class="overline">Spacing</p>
+        <h2 class="t-lg w-medium c-strong">4px base · prefer 4 / 8 / 12 / 16 / 24 / 32</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);max-width:360px">
+        <div class="space-row"><span class="spec">1</span><span class="t-xs c-default">4px</span><div class="space-bar" style="width:4px"></div></div>
+        <div class="space-row"><span class="spec">2</span><span class="t-xs c-default">8px</span><div class="space-bar" style="width:8px"></div></div>
+        <div class="space-row"><span class="spec">3</span><span class="t-xs c-default">12px</span><div class="space-bar" style="width:12px"></div></div>
+        <div class="space-row"><span class="spec">4</span><span class="t-xs c-default">16px</span><div class="space-bar" style="width:16px"></div></div>
+        <div class="space-row"><span class="spec">5</span><span class="t-xs c-default">20px</span><div class="space-bar" style="width:20px"></div></div>
+        <div class="space-row"><span class="spec">6</span><span class="t-xs c-default">24px</span><div class="space-bar" style="width:24px"></div></div>
+        <div class="space-row"><span class="spec">8</span><span class="t-xs c-default">32px</span><div class="space-bar" style="width:32px"></div></div>
+        <div class="space-row"><span class="spec">10</span><span class="t-xs c-default">40px</span><div class="space-bar" style="width:40px"></div></div>
+        <div class="space-row"><span class="spec">12</span><span class="t-xs c-default">48px</span><div class="space-bar" style="width:48px"></div></div>
+        <div class="space-row"><span class="spec">16</span><span class="t-xs c-default">64px</span><div class="space-bar" style="width:64px"></div></div>
+      </div>
+    </section>
+
+    <!-- RADIUS ==================================================== -->
+    <section class="doc-section" id="radius">
+      <div class="doc-section-head">
+        <p class="overline">Radius</p>
+        <h2 class="t-lg w-medium c-strong">Six steps, each with one job</h2>
+      </div>
+      <div class="grid grid-6">
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-sm)"></div><span class="t-sm w-medium c-strong">sm</span><span class="spec">4px<br>Tiny chips</span></div>
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-md)"></div><span class="t-sm w-medium c-strong">md</span><span class="spec">8px<br>Inputs</span></div>
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-lg)"></div><span class="t-sm w-medium c-strong">lg</span><span class="spec">12px<br>Nav items</span></div>
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-xl)"></div><span class="t-sm w-medium c-strong">xl</span><span class="spec">16px<br>Cards</span></div>
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-2xl)"></div><span class="t-sm w-medium c-strong">2xl</span><span class="spec">24px<br>Shells</span></div>
+        <div class="radius-item"><div class="radius-chip" style="border-radius:var(--radius-full)"></div><span class="t-sm w-medium c-strong">full</span><span class="spec">9999px<br>Pills only</span></div>
+      </div>
+    </section>
+
+    <!-- BORDERS & LAYOUT ========================================== -->
+    <section class="doc-section" id="borders">
+      <div class="doc-section-head">
+        <p class="overline">Borders &amp; layout</p>
+        <h2 class="t-lg w-medium c-strong">Lines, breakpoints and fixed sizes</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="doc-sub">
+          <p class="overline">Borders</p>
+          <div class="divider" style="background:var(--color-border)"></div>
+          <p class="t-sm c-default">1px · #F2F2F2 · no shadows by default</p>
+        </div>
+        <div class="doc-sub">
+          <p class="overline">Breakpoints</p>
+          <p class="t-sm c-default">sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536</p>
+          <p class="spec">Sidebar collapses below 768. Full desktop from 1024. Content max 1200.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>Size token</th><th>Value</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><code>--size-control</code></td><td>40px</td><td>Button, input, nav item, icon button height</td></tr>
+            <tr><td><code>--size-topbar</code></td><td>76px</td><td>App top bar height</td></tr>
+            <tr><td><code>--size-sidebar</code></td><td>256px</td><td>App sidebar width</td></tr>
+            <tr><td><code>--size-content-max</code></td><td>1200px</td><td>Max width of page content</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ICONOGRAPHY =============================================== -->
+    <section class="doc-section" id="icons">
+      <div class="doc-section-head">
+        <p class="overline">Iconography</p>
+        <h2 class="t-lg w-medium c-strong">Nucleo Micro Bold</h2>
+        <p class="t-sm c-default">20px grid · 2px round stroke · <code>currentColor</code> · rendered at 14 / 16 / 18 / 20 · filled variants only when the state needs it (e.g. a saved heart).</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="stage stage-white">
+          <p class="overline">Sizes</p>
+          <div class="icon-sizes">
+            <div><svg class="icon icon-strong" width="14" height="14"><use href="#i-heart"/></svg><span class="spec">14 · inline / dense</span></div>
+            <div><svg class="icon icon-strong" width="16" height="16"><use href="#i-heart"/></svg><span class="spec">16 · default UI</span></div>
+            <div><svg class="icon icon-strong" width="18" height="18"><use href="#i-heart"/></svg><span class="spec">18 · top bar</span></div>
+            <div><svg class="icon icon-strong" width="20" height="20"><use href="#i-heart"/></svg><span class="spec">20 · native</span></div>
+            <div><svg class="icon icon-strong" width="40" height="40"><use href="#i-heart"/></svg><span class="spec">40 · empty state</span></div>
+          </div>
+        </div>
+        <div class="stage stage-white">
+          <p class="overline">Color</p>
+          <div class="row">
+            <svg class="icon" width="20" height="20"><use href="#i-heart"/></svg><span class="t-sm c-default">icon · #5D5D5D — default</span>
+          </div>
+          <div class="row">
+            <svg class="icon icon-strong" width="20" height="20"><use href="#i-heart-filled"/></svg><span class="t-sm c-default">icon-strong · #292929 — selected / active</span>
+          </div>
+          <div class="row">
+            <span class="btn btn-primary" style="height:32px;padding:0 var(--space-3)"><svg class="icon" width="16" height="16"><use href="#i-heart"/></svg></span><span class="t-sm c-default">on-inverse · #FFFFFF — on dark fills</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="icon-tools">
+          <label class="input">
+            <svg class="icon" width="16" height="16"><use href="#i-bars-filter"/></svg>
+            <span class="sr-only">Filter icons</span>
+            <input id="icon-filter" type="search" placeholder="Filter icons" autocomplete="off">
+          </label>
+          <div class="row" role="group" aria-label="Preview size">
+            <button class="badge" type="button" data-size="16" aria-pressed="false">16px</button>
+            <button class="badge" type="button" data-size="20" aria-pressed="true">20px</button>
+          </div>
+          <span class="spec" id="icon-count"></span>
+        </div>
+        <p class="spec status" id="icon-status" role="status" aria-live="polite">Click an icon to copy its file name.</p>
+        <div class="icon-grid" id="icon-grid"></div>
+      </div>
+    </section>
+
+    <!-- BUTTON ==================================================== -->
+    <section class="doc-section" id="button">
+      <div class="doc-section-head">
+        <p class="overline">Components · Button</p>
+        <h2 class="t-lg w-medium c-strong">Button</h2>
+        <p class="t-sm c-default">40px · pill · 16px horizontal padding · base 16/24 Medium · 16px icon, 8px gap.</p>
+      </div>
+      <div class="stage stage-white">
+        <div class="row">
+          <button class="btn btn-primary" type="button">Primary</button>
+          <button class="btn btn-primary" type="button"><svg class="icon" width="16" height="16"><use href="#i-download"/></svg>With icon</button>
+          <button class="btn btn-secondary" type="button">Secondary</button>
+          <button class="btn btn-ghost" type="button">Ghost</button>
+          <button class="btn btn-primary" type="button" disabled>Disabled</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>Variant</th><th>Fill</th><th>Text</th><th>Border</th><th>Hover (proposed)</th></tr></thead>
+          <tbody>
+            <tr><td>Primary</td><td><code>inverse</code></td><td><code>on-inverse</code></td><td>—</td><td>opacity .88</td></tr>
+            <tr><td>Secondary</td><td><code>surface</code></td><td><code>text-strong</code></td><td>1px <code>border</code></td><td><code>background-selected</code></td></tr>
+            <tr><td>Ghost</td><td>transparent</td><td><code>text-default</code></td><td>—</td><td><code>background-selected</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="spec">One primary button per view. Disabled: 40% opacity. Focus: 2px <code>text-strong</code> outline, 2px offset.</p>
+    </section>
+
+    <!-- NAV ITEM ================================================== -->
+    <section class="doc-section" id="nav-item">
+      <div class="doc-section-head">
+        <p class="overline">Components · Navigation item</p>
+        <h2 class="t-lg w-medium c-strong">Navigation item</h2>
+        <p class="t-sm c-default">40px · 12px radius · 12px padding · md 14/20 · 16px icon, 12px gap (8px in top-bar tabs).</p>
+      </div>
+      <div class="stage stage-white" style="max-width:360px" data-nav-group>
+        <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-compose2"/></svg>Nav item</button>
+        <button class="nav-item is-selected" type="button" aria-current="page"><svg class="icon" width="16" height="16"><use href="#i-stack-filled"/></svg>Selected item</button>
+        <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg>Nav item</button>
+      </div>
+      <p class="spec">Default: Regular, <code>text-default</code>, <code>icon</code>. Selected: <code>background-selected</code>, Medium, <code>text-strong</code>, <code>icon-strong</code>. Hover (proposed): <code>surface-subtle</code>.</p>
+    </section>
+
+    <!-- INPUT ===================================================== -->
+    <section class="doc-section" id="input">
+      <div class="doc-section-head">
+        <p class="overline">Components · Input</p>
+        <h2 class="t-lg w-medium c-strong">Input</h2>
+        <p class="t-sm c-default">40px · 8px radius · 12px padding · 1px border · sm 13/18 · optional 16px leading icon, 8px gap.</p>
+      </div>
+      <div class="stage stage-white" style="max-width:420px">
+        <label class="input"><svg class="icon" width="16" height="16"><use href="#i-at-sign"/></svg><span class="sr-only">Input with icon</span><input type="text" placeholder="Placeholder"></label>
+        <label class="input"><span class="sr-only">Input with value</span><input type="text" value="Input value"></label>
+      </div>
+      <p class="spec">Placeholder <code>text-subtle</code>, value <code>text-strong</code>. Focus (proposed): border becomes <code>text-subtle</code>.</p>
+    </section>
+
+    <!-- SMALL ===================================================== -->
+    <section class="doc-section" id="small">
+      <div class="doc-section-head">
+        <p class="overline">Components</p>
+        <h2 class="t-lg w-medium c-strong">Icon button · Badge · Divider</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="stage stage-white">
+          <p class="overline">Icon button</p>
+          <div class="row" style="gap:var(--space-2)">
+            <button class="icon-btn" type="button" aria-label="Edit"><svg class="icon" width="16" height="16"><use href="#i-compose2"/></svg></button>
+            <button class="icon-btn is-selected" type="button" aria-label="Edit (selected)"><svg class="icon" width="16" height="16"><use href="#i-compose2"/></svg></button>
+            <button class="icon-btn icon-btn-outline" type="button" aria-label="Settings"><svg class="icon" width="16" height="16"><use href="#i-gear4"/></svg></button>
+          </div>
+          <p class="spec">40×40 · 12px radius · 16px icon. Default / selected / outline. Always give it an aria-label.</p>
+        </div>
+        <div class="stage stage-white">
+          <p class="overline">Badge</p>
+          <div class="row" style="gap:var(--space-2)">
+            <span class="badge is-selected">Selected</span>
+            <span class="badge">Default</span>
+          </div>
+          <p class="spec">24px · pill · 12px padding · xs 12/16. Selected: <code>background-selected</code> + Medium + <code>text-strong</code>.</p>
+        </div>
+        <div class="stage stage-white">
+          <p class="overline">Divider</p>
+          <hr class="divider" style="margin-top:var(--space-3)">
+          <p class="spec">1px · <code>color-divider</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD ====================================================== -->
+    <section class="doc-section" id="card">
+      <div class="doc-section-head">
+        <p class="overline">Components · Card</p>
+        <h2 class="t-lg w-medium c-strong">Card</h2>
+        <p class="t-sm c-default">Quiet surface. 1px border, 16px radius, 24px padding, 12px gap. No shadow.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="row" style="gap:var(--space-2)"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg><span class="t-md w-medium c-strong">Card title</span></div>
+          <p class="t-sm c-default">Quiet surface. 1px border, 16px radius, 24px padding. No shadow.</p>
+        </div>
+        <div class="card">
+          <p class="overline">Overline</p>
+          <p class="t-lg w-medium c-strong">Card title</p>
+          <p class="t-sm c-default">Last edited 2 hours ago</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOGGLE ==================================================== -->
+    <section class="doc-section" id="toggle">
+      <div class="doc-section-head">
+        <p class="overline">Components · Toggle</p>
+        <h2 class="t-lg w-medium c-strong">Toggle</h2>
+        <p class="t-sm c-default">36×20 track · 2px padding · 16px knob.</p>
+      </div>
+      <div class="stage stage-white">
+        <div class="row" style="gap:var(--space-6)">
+          <div class="row" style="gap:var(--space-2)"><button class="toggle" type="button" role="switch" aria-checked="false" aria-label="Off example"><span class="toggle-knob"></span></button><span class="t-sm c-default">Off</span></div>
+          <div class="row" style="gap:var(--space-2)"><button class="toggle" type="button" role="switch" aria-checked="true" aria-label="On example"><span class="toggle-knob"></span></button><span class="t-sm c-default">On</span></div>
+        </div>
+      </div>
+      <p class="spec">Off: track <code>background-selected</code>, knob <code>surface</code> + 1px <code>border</code>. On: track <code>inverse</code>, knob <code>on-inverse</code>, aligned right.</p>
+    </section>
+
+    <!-- SCROLLBAR ================================================= -->
+    <section class="doc-section" id="scrollbar">
+      <div class="doc-section-head">
+        <p class="overline">Components · Scrollbar</p>
+        <h2 class="t-lg w-medium c-strong">Scrollbar</h2>
+        <p class="t-sm c-default">10px gutter · 6px pill thumb inset 2px · transparent track · no arrow buttons. Thumb is <code>text-strong</code> at 16%, 32% on hover. Applied globally.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="doc-sub">
+          <p class="overline">Vertical</p>
+          <div class="scroll-demo" tabindex="0" aria-label="Vertical scroll example">
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 1</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 2</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 3</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 4</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 5</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 6</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 7</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 8</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 9</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 10</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 11</div>
+            <div class="nav-item"><svg class="icon" width="16" height="16"><use href="#i-file"/></svg>Row 12</div>
+          </div>
+        </div>
+        <div class="doc-sub">
+          <p class="overline">Horizontal</p>
+          <div class="scroll-demo" tabindex="0" aria-label="Horizontal scroll example" style="height:auto">
+            <div class="scroll-demo-wide row" style="flex-wrap:nowrap">
+              <span class="badge is-selected">Selected</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span><span class="badge">Default</span>
+            </div>
+          </div>
+          <p class="spec">Rows of tabs that scroll sideways hide the bar with <code>.no-scrollbar</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP SHELL ================================================= -->
+    <section class="doc-section" id="shell">
+      <div class="doc-section-head">
+        <p class="overline">Patterns · App shell</p>
+        <h2 class="t-lg w-medium c-strong">Top bar · sidebar · content</h2>
+        <p class="t-sm c-default">Top bar 76px, 24px padding, 24px gap, tabs 4px apart. Sidebar 256px, 16px padding, 4px between items. Shell radius 24px.</p>
+      </div>
+      <div class="shell">
+        <div class="shell-topbar">
+          <div class="wordmark" aria-label="Logo"><svg class="icon icon-strong" width="18" height="18"><use href="#i-stack-filled"/></svg></div>
+          <nav class="shell-tabs no-scrollbar" aria-label="Primary" data-nav-group>
+            <button class="nav-item is-tab" type="button"><svg class="icon" width="16" height="16"><use href="#i-house2"/></svg>Tab</button>
+            <button class="nav-item is-tab is-selected" type="button" aria-current="page"><svg class="icon" width="16" height="16"><use href="#i-grid2"/></svg>Selected tab</button>
+            <button class="nav-item is-tab" type="button"><svg class="icon" width="16" height="16"><use href="#i-envelope"/></svg>Tab</button>
+            <button class="nav-item is-tab" type="button"><svg class="icon" width="16" height="16"><use href="#i-gear4"/></svg>Tab</button>
+          </nav>
+        </div>
+        <div class="shell-body">
+          <nav class="shell-sidebar" aria-label="Secondary" data-nav-group>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-compose2"/></svg>Nav item</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-square-layout-grid"/></svg>Nav item</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-history"/></svg>Nav item</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-files"/></svg>Nav item</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-bookmark"/></svg>Nav item</button>
+            <button class="nav-item is-selected" type="button" aria-current="page"><svg class="icon" width="16" height="16"><use href="#i-stack-filled"/></svg>Selected item</button>
+            <p class="t-xs c-subtle nav-label">Section label</p>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg>Folder</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg>Folder</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg>Folder</button>
+            <button class="nav-item" type="button"><svg class="icon" width="16" height="16"><use href="#i-folder"/></svg>Folder</button>
+          </nav>
+          <div class="shell-main">
+            <div class="empty-state">
+              <svg class="icon icon-strong" width="40" height="40"><use href="#i-stack-filled"/></svg>
+              <div class="empty-state-text">
+                <p class="t-xl w-medium c-strong">Empty state title</p>
+                <p class="t-base c-default">One sentence on what appears here and how to start.</p>
+              </div>
+              <button class="btn btn-primary" type="button">Primary action</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="spec">Below 768px the sidebar is hidden — resize the window to see it collapse.</p>
+    </section>
+
+    <!-- CONTENT HEADER ============================================ -->
+    <section class="doc-section" id="content-header">
+      <div class="doc-section-head">
+        <p class="overline">Patterns · Content header</p>
+        <h2 class="t-lg w-medium c-strong">Content header</h2>
+        <p class="t-sm c-default">Title xl + sm description (8px apart), primary action bottom-aligned right, 24px bottom padding, 1px divider.</p>
+      </div>
+      <div class="stage stage-white">
+        <div class="content-header">
+          <div class="content-header-text">
+            <h3 class="t-xl w-medium c-strong">Page title</h3>
+            <p class="t-sm c-default">One-line description of this page.</p>
+          </div>
+          <button class="btn btn-primary" type="button">Primary action</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS ================================================== -->
+    <section class="doc-section" id="settings">
+      <div class="doc-section-head">
+        <p class="overline">Patterns · Settings section</p>
+        <h2 class="t-lg w-medium c-strong">Settings section</h2>
+        <p class="t-sm c-default">Card shell (16px radius, clipped). Rows 16px × 24px padding, 24px gap, divider between. Label md Medium + sm description (4px apart). Controls 220px wide.</p>
+      </div>
+      <div class="settings">
+        <div class="settings-row">
+          <div class="settings-row-text"><span class="t-md w-medium c-strong">Display name</span><span class="t-sm c-default">Shown in the sidebar and top bar.</span></div>
+          <label class="input"><span class="sr-only">Display name</span><input type="text" value="Value"></label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-text"><span class="t-md w-medium c-strong">Default landing</span><span class="t-sm c-default">Page opened when the app launches.</span></div>
+          <label class="input"><span class="sr-only">Default landing</span><input type="text" value="Value"></label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-text"><span class="t-md w-medium c-strong">Compact sidebar</span><span class="t-sm c-default">Reduce row padding in navigation.</span></div>
+          <button class="toggle" type="button" role="switch" aria-checked="false" aria-label="Compact sidebar"><span class="toggle-knob"></span></button>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-text"><span class="t-md w-medium c-strong">Show section labels</span><span class="t-sm c-default">Group headings in navigation.</span></div>
+          <button class="toggle" type="button" role="switch" aria-checked="true" aria-label="Show section labels"><span class="toggle-knob"></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPTY STATE =============================================== -->
+    <section class="doc-section" id="empty">
+      <div class="doc-section-head">
+        <p class="overline">Patterns · Empty state</p>
+        <h2 class="t-lg w-medium c-strong">Empty state</h2>
+        <p class="t-sm c-default">Centered, 64px padding, 24px gap. 40px <code>icon-strong</code> glyph · xl title · base description (12px apart) · one primary button.</p>
+      </div>
+      <div class="stage stage-white" style="padding:0">
+        <div class="empty-state">
+          <svg class="icon icon-strong" width="40" height="40"><use href="#i-folder-open"/></svg>
+          <div class="empty-state-text">
+            <p class="t-xl w-medium c-strong">Nothing here yet</p>
+            <p class="t-base c-default">Items you add will show up here.</p>
+          </div>
+          <button class="btn btn-primary" type="button">Primary action</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOKENS ==================================================== -->
+    <section class="doc-section" id="tokens">
+      <div class="doc-section-head">
+        <p class="overline">Reference</p>
+        <h2 class="t-lg w-medium c-strong">Tokens (CSS)</h2>
+        <p class="t-sm c-default">Paste into your global stylesheet. Same values as DESIGN_SYSTEM.md.</p>
+      </div>
+      <div class="doc-sub">
+        <div class="code-head">
+          <span class="spec status" id="token-status" role="status" aria-live="polite"></span>
+          <button class="btn btn-secondary" type="button" id="copy-tokens" style="height:32px;padding:0 var(--space-3);font-size:var(--text-sm)">Copy tokens</button>
+        </div>
+        <pre class="code" id="token-css"></pre>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  var ICONS = ["accessibility", "alert-info", "alert-question", "alert-warning", "anchor", "app-stack", "archive", "archive-download", "archive-export", "arrow-door-in", "arrow-door-out", "arrow-down", "arrow-down-left", "arrow-down-right", "arrow-left", "arrow-right", "arrow-rotate-anticlockwise", "arrows-bold-opposite-direction", "arrows-cross", "arrows-expand-diagonal7", "arrows-reduce-diagonal", "arrow-trend-down", "arrow-trend-up", "arrow-up", "arrow-up-left", "arrow-up-right", "at-sign", "badge-check", "bars-filter", "basement", "bed", "bolt", "bolt-filled", "bookmark", "bookmark-filled", "box-archive", "box-archive-download", "brightness-increase", "button", "caret-expand-y", "caret-up-right-down-left", "chat-bot", "check", "check2", "checkbox-checked", "checkbox-checked-filled", "checkbox-unchecked", "chevron-expand-y", "circle-check-plus", "circle-half-dotted-check", "circle-info", "circle-question", "circle-user-filled", "circle-warning", "clipboard", "clock-rotate-clockwise", "clone", "clone-filled", "cloud-refresh", "compose2", "desk-lamp", "download", "download4", "envelope", "envelope-filled", "envelope-open-heart", "expand", "expand2", "eye", "eye-filled", "face-expression", "face-plus", "face-search", "feather", "feather-filled", "file", "file-clip", "file-clock", "file-download", "files", "file-search", "finder", "folder", "folder-open", "folder-tree", "forklift", "full-screen4", "gauge2", "gear4", "ghost-enraged", "grid2", "grid-check", "grid-circle-plus", "grid-filled", "grid-layout", "grid-plus", "hammer2", "hand2", "hand-holding-heart", "heart", "heart-filled", "hexagon-check", "history", "house2", "house2-fill", "house6", "house6-fill", "id-badge", "label", "label-filled", "label-plus", "language", "laptop-video", "layers2", "layers2-filled", "list-checkbox", "mailbox", "msg", "msg-bubble-user", "msg-filled", "msg-smile2", "office3", "ordered-list", "page", "paperclip", "paper-plane2", "party", "pen-nib2", "pen-sparkle", "pen-writing", "pen-writing-filled", "person-walking", "person-wheelchair", "photo", "photo-filled", "print", "progress-bar", "radio-checked", "radio-unchecked", "rect-layout-grid3-filled", "refresh", "refresh-anticlockwise", "repeat2", "rotate-obj-anticlockwise", "rotate-obj-clockwise", "saved-items", "side-profile-heart", "signature", "skull", "slider", "sort-bottom-to-middle", "sort-bottom-to-top2", "sort-middle-to-top", "sort-obj-bottom-to-top", "square-kanban", "square-layout-grid", "square-layout-grid3", "stack-filled", "stack-perspective2", "star", "star-lock", "storage", "swap", "tabs-minus", "tabs-plus", "thumbs-up", "timeline-vertical2", "toggle3", "trash", "trash-filled", "triangle-warning", "triangle-warning-filled", "upload", "user", "user-filled", "users", "users-filled", "view-all", "window", "window-code2"];
+  var size = 20;
+  var grid = document.getElementById("icon-grid");
+  var filter = document.getElementById("icon-filter");
+  var count = document.getElementById("icon-count");
+  var status = document.getElementById("icon-status");
+
+  function copy(text, el, msg) {
+    function done() { el.textContent = msg; }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { el.textContent = text; });
+      } else { el.textContent = text; }
+    } catch (e) { el.textContent = text; }
+  }
+
+  function render() {
+    var q = (filter.value || "").trim().toLowerCase();
+    var list = ICONS.filter(function (n) { return !q || n.indexOf(q) !== -1; });
+    grid.innerHTML = list.map(function (n) {
+      return '<button type="button" class="icon-cell" data-name="' + n + '" title="' + n + '">' +
+        '<svg class="icon" width="' + size + '" height="' + size + '" aria-hidden="true"><use href="#i-' + n + '"/></svg>' +
+        '<span>' + n + '</span></button>';
+    }).join("");
+    count.textContent = list.length + " of " + ICONS.length + " icons";
+  }
+
+  grid.addEventListener("click", function (e) {
+    var cell = e.target.closest(".icon-cell");
+    if (!cell) return;
+    var name = cell.getAttribute("data-name");
+    copy("icons/nucleo/micro-bold/" + name + ".svg", status, "Copied icons/nucleo/micro-bold/" + name + ".svg");
+  });
+  filter.addEventListener("input", render);
+  document.querySelectorAll("[data-size]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      size = +b.getAttribute("data-size");
+      document.querySelectorAll("[data-size]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      render();
+    });
+  });
+  render();
+
+  /* Toggles */
+  document.querySelectorAll(".toggle").forEach(function (t) {
+    t.addEventListener("click", function () { t.setAttribute("aria-checked", t.getAttribute("aria-checked") === "true" ? "false" : "true"); });
+  });
+
+  /* Nav groups: single selection */
+  document.querySelectorAll("[data-nav-group]").forEach(function (g) {
+    g.addEventListener("click", function (e) {
+      var item = e.target.closest(".nav-item");
+      if (!item || !g.contains(item)) return;
+      g.querySelectorAll(".nav-item").forEach(function (x) { x.classList.remove("is-selected"); x.removeAttribute("aria-current"); });
+      item.classList.add("is-selected"); item.setAttribute("aria-current", "page");
+    });
+  });
+
+  /* Tokens: read the :root block straight from this page's stylesheet */
+  var css = "";
+  try {
+    var text = document.querySelector("style").textContent;
+    var start = text.indexOf(":root {");
+    var end = text.indexOf("\n}", start);
+    css = text.slice(start, end + 2);
+  } catch (e) {}
+  document.getElementById("token-css").textContent = css;
+  document.getElementById("copy-tokens").addEventListener("click", function () {
+    copy(css, document.getElementById("token-status"), "Copied " + css.split("\n").length + " lines.");
+  });
+
+  /* Doc nav: highlight current section */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".doc-nav .nav-item"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (l) {
+          var on = l.getAttribute("href") === "#" + en.target.id;
+          l.classList.toggle("is-selected", on);
+        });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll(".doc-section").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

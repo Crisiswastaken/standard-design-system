@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <polygon points="4.367 3.044 3.771 6.798 7.516 6.145 4.367 3.044" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill="currentColor" />
+  <path d="m5.101,5c1.263-1.237,2.992-2,4.899-2,3.866,0,7,3.134,7,7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  <path d="m14.899,15c-1.263,1.237-2.992,2-4.899,2-3.866,0-7-3.134-7-7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  <polygon points="15.633 16.956 16.229 13.202 12.484 13.855 15.633 16.956" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+</svg>
