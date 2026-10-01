@@ -8,9 +8,3 @@ desktop.ini
 .idea/
 *.swp
 *.swo
-
-# Apple SF Pro — proprietary; download separately (see fonts/sf-pro/README.md)
-fonts/sf-pro/*.otf
-fonts/sf-pro/*.ttf
-fonts/sf-pro/*.woff
-fonts/sf-pro/*.woff2

@@ -16,13 +16,12 @@ Quiet, monochromatic UI kit for the NMPL e-commerce product. Hierarchy comes fro
 | Preview | [`design-system/index.html`](design-system/index.html) | Open in a browser |
 | Icons | [`icons/nucleo/micro-bold/`](icons/nucleo/micro-bold/) | 20px SVGs, `currentColor` |
 | Icon gallery | [`icons/nucleo/index.html`](icons/nucleo/index.html) | Browse all icons |
-| Fonts | [`fonts/sf-pro/`](fonts/sf-pro/) | Apple SF Pro — not shipped in git |
+| Fonts | [`fonts/sf-pro/`](fonts/sf-pro/) | Apple SF Pro (Text / Display / Rounded) |
 
 ## Quick start
 
-1. **Fonts** — download SF Pro from [Apple Developer Fonts](https://developer.apple.com/fonts/) and place the files in `fonts/sf-pro/` (see that folder’s README).
-2. **Preview** — open `design-system/index.html` in a browser.
-3. **Icons** — open `icons/nucleo/index.html`, or inline any SVG from `icons/nucleo/micro-bold/`.
+1. **Preview** — open `design-system/index.html` in a browser (fonts load from `fonts/sf-pro/`).
+2. **Icons** — open `icons/nucleo/index.html`, or inline any SVG from `icons/nucleo/micro-bold/`.
 
 ```html
 <img src="icons/nucleo/micro-bold/check.svg" width="20" height="20" alt="" />
@@ -46,4 +45,4 @@ Quiet, monochromatic UI kit for the NMPL e-commerce product. Hierarchy comes fro
 
 Design tokens, documentation, and Nucleo icon SVGs in this repo are available for use in NMPL projects.
 
-**SF Pro** remains Apple proprietary. Font binaries are gitignored; obtain them under Apple’s license.
+**SF Pro** remains Apple proprietary — use under [Apple’s font license](https://developer.apple.com/fonts/).
